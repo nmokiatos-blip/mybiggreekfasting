@@ -13,7 +13,7 @@ const config: Config = {
         obsidian: "#171717",
         marble: "#F7F2E8",
         limestone: "#D8CCB8",
-        laurel: "#B08A3C",
+        laurel: "#CD983C",
         terracotta: "#A65332",
         stone: "#EFE6D6"
       },

@@ -23,7 +23,7 @@ body {
   min-height: 100vh;
   background:
     linear-gradient(180deg, rgba(11, 61, 92, 0.1), transparent 340px),
-    radial-gradient(circle at 86% 10%, rgba(176, 138, 60, 0.16), transparent 28%),
+    radial-gradient(circle at 86% 10%, rgba(205, 152, 60, 0.16), transparent 28%),
     #F7F2E8;
   color: #171717;
   font-family: var(--font-sans);
@@ -44,7 +44,7 @@ body {
 .stone-surface {
   background:
     linear-gradient(135deg, rgba(247, 242, 232, 0.96), rgba(239, 230, 214, 0.88)),
-    radial-gradient(circle at 22% 16%, rgba(176, 138, 60, 0.12), transparent 24%),
+    radial-gradient(circle at 22% 16%, rgba(205, 152, 60, 0.12), transparent 24%),
     radial-gradient(circle at 82% 26%, rgba(166, 83, 50, 0.1), transparent 22%),
     repeating-linear-gradient(90deg, rgba(23, 23, 23, 0.026) 0 1px, transparent 1px 22px);
 }
@@ -52,12 +52,12 @@ body {
 .parchment-card {
   background:
     linear-gradient(145deg, rgba(255, 252, 244, 0.92), rgba(247, 242, 232, 0.86)),
-    repeating-linear-gradient(135deg, rgba(176, 138, 60, 0.045) 0 1px, transparent 1px 16px);
+    repeating-linear-gradient(135deg, rgba(205, 152, 60, 0.045) 0 1px, transparent 1px 16px);
 }
 
 .aegean-surface {
   background:
-    radial-gradient(circle at 78% 16%, rgba(176, 138, 60, 0.3), transparent 18rem),
+    radial-gradient(circle at 78% 16%, rgba(205, 152, 60, 0.3), transparent 18rem),
     radial-gradient(circle at 12% 88%, rgba(166, 83, 50, 0.24), transparent 20rem),
     linear-gradient(135deg, #082C43 0%, #0B3D5C 54%, #061C2C 100%);
 }
@@ -92,6 +92,6 @@ body {
 
 .sun-disc {
   background:
-    radial-gradient(circle, rgba(176, 138, 60, 0.95) 0 34%, rgba(176, 138, 60, 0.18) 35% 48%, transparent 49%),
-    conic-gradient(from 0deg, transparent 0 8deg, rgba(176, 138, 60, 0.38) 8deg 13deg, transparent 13deg 28deg);
+    radial-gradient(circle, rgba(205, 152, 60, 0.95) 0 34%, rgba(205, 152, 60, 0.18) 35% 48%, transparent 49%),
+    conic-gradient(from 0deg, transparent 0 8deg, rgba(205, 152, 60, 0.38) 8deg 13deg, transparent 13deg 28deg);
 }

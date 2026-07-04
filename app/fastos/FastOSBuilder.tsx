@@ -599,7 +599,7 @@ function OptionSelectWithOther({
               onClick={() => toggleOption(option)}
               className={
                 isSelected
-                  ? "border border-laurel bg-laurel/18 px-4 py-2 text-sm font-black text-obsidian shadow-[0_8px_20px_rgba(176,138,60,0.18)] transition hover:bg-laurel/24"
+                  ? "border border-laurel bg-laurel/18 px-4 py-2 text-sm font-black text-obsidian shadow-[0_8px_20px_rgba(205,152,60,0.18)] transition hover:bg-laurel/24"
                   : "border border-limestone bg-marble px-4 py-2 text-sm font-bold text-obsidian/76 shadow-[inset_0_-2px_0_rgba(23,23,23,0.04)] transition hover:border-laurel/55 hover:bg-white hover:text-deepAegean"
               }
             >
@@ -651,7 +651,7 @@ function CheckboxGroup({
             key={option}
             className={
               selected.includes(option)
-                ? "flex min-h-12 items-center gap-3 border border-laurel bg-laurel/16 px-4 py-3 text-sm font-black text-obsidian shadow-[0_8px_20px_rgba(176,138,60,0.14)]"
+                ? "flex min-h-12 items-center gap-3 border border-laurel bg-laurel/16 px-4 py-3 text-sm font-black text-obsidian shadow-[0_8px_20px_rgba(205,152,60,0.14)]"
                 : "flex min-h-12 items-center gap-3 border border-limestone bg-marble px-4 py-3 text-sm font-bold text-obsidian/80 transition hover:border-laurel/55 hover:bg-white"
             }
           >
