@@ -25,6 +25,23 @@ type FormValues = {
   preferredApproach: string;
 };
 
+type OptionFieldKey =
+  | "schedule"
+  | "currentFood"
+  | "problemFoods"
+  | "ancestralFoods"
+  | "fastingGift"
+  | "controlledBy"
+  | "safetyNote"
+  | "lifestyleConstraints";
+
+type OptionFieldState = {
+  selected: string[];
+  other: string;
+};
+
+type OptionFieldsState = Record<OptionFieldKey, OptionFieldState>;
+
 type FieldProps = {
   id: keyof FormValues;
   label: string;
@@ -54,7 +71,220 @@ const initialValues: FormValues = {
   preferredApproach: ""
 };
 
+const initialOptionFields: OptionFieldsState = {
+  schedule: { selected: [], other: "" },
+  currentFood: { selected: [], other: "" },
+  problemFoods: { selected: [], other: "" },
+  ancestralFoods: { selected: [], other: "" },
+  fastingGift: { selected: [], other: "" },
+  controlledBy: { selected: [], other: "" },
+  safetyNote: { selected: [], other: "" },
+  lifestyleConstraints: { selected: [], other: "" }
+};
+
 const ageRanges = ["Under 25", "25-34", "35-44", "45-54", "55-64", "65+"];
+
+const scheduleOptions = [
+  "Office job",
+  "Remote work",
+  "Restaurant work",
+  "Physical job",
+  "Night shifts",
+  "Travel often",
+  "Retired",
+  "Parent / family schedule",
+  "Student",
+  "Irregular schedule",
+  "Early mornings",
+  "Late nights",
+  "Walks often",
+  "Exercises regularly",
+  "Mostly sedentary",
+  "Social meals often"
+];
+
+const currentFoodOptions = [
+  "Pasta",
+  "Pizza",
+  "Bread",
+  "Rice",
+  "Potatoes",
+  "Burgers",
+  "Fast food",
+  "Sandwiches",
+  "Sweets / desserts",
+  "Sugar / desserts",
+  "Chocolate",
+  "Cookies / biscuits",
+  "Breakfast cereal",
+  "Fruit",
+  "Yogurt",
+  "Cheese",
+  "Eggs",
+  "Beef",
+  "Lamb",
+  "Pork",
+  "Chicken",
+  "Fish",
+  "Sardines",
+  "Seafood",
+  "Processed meats",
+  "Restaurant food",
+  "Home-cooked meals",
+  "Snacks",
+  "Nuts",
+  "Alcohol",
+  "Sweet drinks",
+  "Diet drinks",
+  "Coffee",
+  "Mineral water"
+];
+
+const problemFoodOptions = [
+  "Sugar",
+  "Bread",
+  "Pasta",
+  "Pizza",
+  "Rice",
+  "Potatoes / fries",
+  "Chocolate",
+  "Ice cream",
+  "Pastries",
+  "Cookies / biscuits",
+  "Chips",
+  "Nuts",
+  "Cheese",
+  "Alcohol",
+  "Sweet drinks",
+  "Diet soda",
+  "Fruit",
+  "Late-night snacks",
+  "Fast food",
+  "Restaurant bread basket",
+  "Emotional eating",
+  "Eating from boredom",
+  "Eating from stress",
+  "Social pressure",
+  "Fear of hunger"
+];
+
+const ancestralFoodOptions = [
+  "Beef",
+  "Lamb",
+  "Pork",
+  "Duck",
+  "Chicken",
+  "Eggs",
+  "Sardines",
+  "Mackerel",
+  "Fish",
+  "Seafood",
+  "Octopus",
+  "Liver / organs",
+  "Bone broth",
+  "Local cheese",
+  "Greek yogurt",
+  "Butter",
+  "Olive oil",
+  "Animal fat",
+  "Horta / wild greens",
+  "Simple vegetables",
+  "Mineral water",
+  "Black coffee",
+  "Greek coffee",
+  "Fermented foods",
+  "Local traditional meats",
+  "Farmers market foods"
+];
+
+const fastingGiftOptions = [
+  "Weight loss",
+  "Less hunger",
+  "Freedom from food noise",
+  "More energy",
+  "Mental clarity",
+  "Better discipline",
+  "Ketones",
+  "Autophagy",
+  "Metabolic flexibility",
+  "Better control around food",
+  "Less snacking",
+  "Less sugar craving",
+  "Simpler eating",
+  "Emotional calm",
+  "Confidence",
+  "Better relationship with food",
+  "Spiritual discipline",
+  "Longevity",
+  "Reset after food chaos",
+  "Structure"
+];
+
+const controlledByOptions = [
+  "Hunger",
+  "Sugar",
+  "Bread",
+  "Pasta",
+  "Pizza",
+  "Snacks",
+  "Emotional eating",
+  "Night eating",
+  "Restaurant food",
+  "Social pressure",
+  "The clock",
+  "Breakfast habit",
+  "Dessert habit",
+  "Fear of hunger",
+  "Boredom eating",
+  "Stress eating",
+  "Family pressure",
+  "Alcohol",
+  "Fast food",
+  "Food delivery",
+  "Diet culture",
+  "Scale obsession"
+];
+
+const safetyNoteOptions = [
+  "No known medical issue",
+  "I take medication",
+  "Blood pressure medication",
+  "Diabetes / blood sugar issue",
+  "Heart condition",
+  "Kidney issue",
+  "History of fainting",
+  "History of eating disorder",
+  "Pregnant / breastfeeding",
+  "Underweight",
+  "Digestive issues",
+  "Medication must be taken with food",
+  "Not sure / prefer to be cautious",
+  "I will ask a qualified professional if needed"
+];
+
+const lifestyleConstraintOptions = [
+  "Family dinners",
+  "Work lunches",
+  "Restaurant meals",
+  "Travel",
+  "Night shifts",
+  "Irregular schedule",
+  "Limited cooking",
+  "Small kitchen",
+  "Low budget",
+  "Food availability",
+  "Social pressure",
+  "Eating with children",
+  "Partner/family does not fast",
+  "Business meals",
+  "Late dinners",
+  "Early breakfast meetings",
+  "Gym / training schedule",
+  "Stressful work",
+  "Poor sleep",
+  "Frequent celebrations",
+  "Cultural food expectations"
+];
 
 const foodEnvironments = [
   "I cook most meals",
@@ -129,6 +359,17 @@ function safeValue(value: string, fallback = "Not answered") {
 
 function listValue(values: string[]) {
   return values.length > 0 ? values.join(", ") : "Not answered";
+}
+
+function combineOptionsAndOther(selectedOptions: string[], otherText: string) {
+  const selected = selectedOptions.join(", ");
+  const other = otherText.trim();
+
+  if (selected && other) {
+    return `${selected}. Other: ${other}`;
+  }
+
+  return selected || other;
 }
 
 function buildPrompt(values: FormValues) {
@@ -285,19 +526,79 @@ function SelectField({
   );
 }
 
-function TextAreaField({ id, label, value, placeholder, onChange }: FieldProps) {
+function OptionSelectWithOther({
+  groupId,
+  label,
+  helperText = "Choose all that apply, then add anything missing in Other.",
+  options,
+  selected,
+  other,
+  otherLabel,
+  otherPlaceholder,
+  onSelectedChange,
+  onOtherChange
+}: {
+  groupId: string;
+  label: string;
+  helperText?: string;
+  options: string[];
+  selected: string[];
+  other: string;
+  otherLabel: string;
+  otherPlaceholder?: string;
+  onSelectedChange: (next: string[]) => void;
+  onOtherChange: (next: string) => void;
+}) {
+  function toggleOption(option: string) {
+    onSelectedChange(
+      selected.includes(option)
+        ? selected.filter((item) => item !== option)
+        : [...selected, option]
+    );
+  }
+
   return (
-    <div className="grid gap-2">
-      <FieldLabel htmlFor={id}>{label}</FieldLabel>
-      <textarea
-        id={id}
-        value={value}
-        onChange={(event) => onChange(id, event.target.value)}
-        placeholder={placeholder}
-        rows={4}
-        className="min-h-28 w-full resize-y border border-limestone bg-marble px-4 py-3 text-base leading-7 text-obsidian outline-none transition placeholder:text-obsidian/42 focus:border-aegean focus:bg-white focus:ring-2 focus:ring-aegean/18"
-      />
-    </div>
+    <fieldset className="grid gap-4" data-option-group={groupId}>
+      <div>
+        <legend className="text-sm font-black text-obsidian">{label}</legend>
+        {helperText ? (
+          <p className="mt-1 text-sm leading-6 text-obsidian/62">{helperText}</p>
+        ) : null}
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        {options.map((option) => {
+          const isSelected = selected.includes(option);
+
+          return (
+            <button
+              key={option}
+              type="button"
+              aria-pressed={isSelected}
+              onClick={() => toggleOption(option)}
+              className={
+                isSelected
+                  ? "border border-deepAegean bg-deepAegean px-4 py-2 text-sm font-black text-white shadow-[0_8px_20px_rgba(8,119,216,0.16)] transition hover:bg-aegean"
+                  : "border border-limestone bg-marble px-4 py-2 text-sm font-bold text-obsidian/76 transition hover:border-aegean/45 hover:bg-white hover:text-deepAegean"
+              }
+            >
+              {option}
+            </button>
+          );
+        })}
+      </div>
+
+      <label className="grid gap-2">
+        <span className="text-sm font-black text-obsidian">{otherLabel}</span>
+        <textarea
+          value={other}
+          onChange={(event) => onOtherChange(event.target.value)}
+          placeholder={otherPlaceholder}
+          rows={3}
+          className="min-h-24 w-full resize-y border border-limestone bg-marble px-4 py-3 text-base leading-7 text-obsidian outline-none transition placeholder:text-obsidian/42 focus:border-aegean focus:bg-white focus:ring-2 focus:ring-aegean/18"
+        />
+      </label>
+    </fieldset>
   );
 }
 
@@ -446,6 +747,7 @@ function PromptOutput({
 
 export function FastOSBuilder() {
   const [values, setValues] = useState<FormValues>(initialValues);
+  const [optionFields, setOptionFields] = useState<OptionFieldsState>(initialOptionFields);
   const [prompt, setPrompt] = useState("");
   const [copied, setCopied] = useState(false);
   const hasPrompt = prompt.length > 0;
@@ -458,6 +760,24 @@ export function FastOSBuilder() {
 
   function updateValue(id: keyof FormValues, value: string) {
     setValues((current) => ({ ...current, [id]: value }));
+    setCopied(false);
+  }
+
+  function updateOptionField(
+    id: OptionFieldKey,
+    nextPartial: Partial<OptionFieldState>
+  ) {
+    const nextState = {
+      ...optionFields[id],
+      ...nextPartial
+    };
+    const combined = combineOptionsAndOther(nextState.selected, nextState.other);
+
+    setOptionFields((current) => ({
+      ...current,
+      [id]: nextState
+    }));
+    setValues((currentValues) => ({ ...currentValues, [id]: combined }));
     setCopied(false);
   }
 
@@ -476,6 +796,7 @@ export function FastOSBuilder() {
 
   function clearForm() {
     setValues(initialValues);
+    setOptionFields(initialOptionFields);
     setPrompt("");
     setCopied(false);
   }
@@ -621,34 +942,66 @@ export function FastOSBuilder() {
                 value={values.country}
                 onChange={updateValue}
               />
-              <TextAreaField
-                id="schedule"
+              <OptionSelectWithOther
+                groupId="schedule"
                 label="Typical daily schedule"
-                value={values.schedule}
-                onChange={updateValue}
-                placeholder="Example: office job, remote work, restaurant work, night shifts, travel often, retired, etc."
+                options={scheduleOptions}
+                selected={optionFields.schedule.selected}
+                other={optionFields.schedule.other}
+                otherLabel="Other schedule details"
+                otherPlaceholder="Example: I work from home, walk daily, eat late with family, travel twice a month."
+                onSelectedChange={(selected) =>
+                  updateOptionField("schedule", { selected })
+                }
+                onOtherChange={(other) => updateOptionField("schedule", { other })}
               />
             </FormSection>
 
             <FormSection title="B. Current Food Reality">
-              <TextAreaField
-                id="currentFood"
+              <OptionSelectWithOther
+                groupId="current-food"
                 label="What do you currently eat most often?"
-                value={values.currentFood}
-                onChange={updateValue}
+                options={currentFoodOptions}
+                selected={optionFields.currentFood.selected}
+                other={optionFields.currentFood.other}
+                otherLabel="Other foods you eat often"
+                otherPlaceholder="Example: croissants, ice cream, kebab, tacos, charcuterie, pastries."
+                onSelectedChange={(selected) =>
+                  updateOptionField("currentFood", { selected })
+                }
+                onOtherChange={(other) =>
+                  updateOptionField("currentFood", { other })
+                }
               />
-              <TextAreaField
-                id="problemFoods"
+              <OptionSelectWithOther
+                groupId="problem-foods"
                 label="What foods create the most cravings or problems for you?"
-                value={values.problemFoods}
-                onChange={updateValue}
+                options={problemFoodOptions}
+                selected={optionFields.problemFoods.selected}
+                other={optionFields.problemFoods.other}
+                otherLabel="Other craving/problem foods"
+                otherPlaceholder="Example: I cannot stop once I start eating bread at restaurants."
+                onSelectedChange={(selected) =>
+                  updateOptionField("problemFoods", { selected })
+                }
+                onOtherChange={(other) =>
+                  updateOptionField("problemFoods", { other })
+                }
               />
-              <TextAreaField
-                id="ancestralFoods"
+              <OptionSelectWithOther
+                groupId="ancestral-foods"
                 label="What real ancestral foods are available where you live?"
-                value={values.ancestralFoods}
-                onChange={updateValue}
-                placeholder="Example: beef, lamb, sardines, eggs, local cheese, seafood, horta, olive oil, etc."
+                options={ancestralFoodOptions}
+                selected={optionFields.ancestralFoods.selected}
+                other={optionFields.ancestralFoods.other}
+                otherLabel="Other local ancestral foods"
+                otherPlaceholder="Example: local cheese, duck, oysters, goat meat, village eggs, wild greens."
+                onSelectedChange={(selected) =>
+                  updateOptionField("ancestralFoods", { selected })
+                }
+                onOtherChange={(other) =>
+                  updateOptionField("ancestralFoods", { other })
+                }
               />
               <SelectField
                 id="foodEnvironment"
@@ -690,35 +1043,69 @@ export function FastOSBuilder() {
                 options={goals}
                 onChange={updateValue}
               />
-              <TextAreaField
-                id="fastingGift"
+              <OptionSelectWithOther
+                groupId="fasting-gift"
                 label="What do you want fasting to give you?"
-                value={values.fastingGift}
-                onChange={updateValue}
+                options={fastingGiftOptions}
+                selected={optionFields.fastingGift.selected}
+                other={optionFields.fastingGift.other}
+                otherLabel="Other fasting goals"
+                otherPlaceholder="Example: I want to stop thinking about food all day."
+                onSelectedChange={(selected) =>
+                  updateOptionField("fastingGift", { selected })
+                }
+                onOtherChange={(other) =>
+                  updateOptionField("fastingGift", { other })
+                }
               />
-              <TextAreaField
-                id="controlledBy"
+              <OptionSelectWithOther
+                groupId="controlled-by"
                 label="What do you want to stop being controlled by?"
-                value={values.controlledBy}
-                onChange={updateValue}
-                placeholder="Example: sugar, bread, snacks, emotional eating, the clock, social pressure, fear of hunger."
+                options={controlledByOptions}
+                selected={optionFields.controlledBy.selected}
+                other={optionFields.controlledBy.other}
+                otherLabel="Other things controlling you"
+                otherPlaceholder="Example: I want to stop eating because everyone else is eating."
+                onSelectedChange={(selected) =>
+                  updateOptionField("controlledBy", { selected })
+                }
+                onOtherChange={(other) =>
+                  updateOptionField("controlledBy", { other })
+                }
               />
             </FormSection>
 
             <FormSection title="E. Constraints">
-              <TextAreaField
-                id="safetyNote"
+              <OptionSelectWithOther
+                groupId="safety-note"
                 label="Medical / safety note"
-                value={values.safetyNote}
-                onChange={updateValue}
-                placeholder="Optional: medications, health conditions, pregnancy, eating disorder history, or anything an AI should tell you to discuss with a qualified professional."
+                helperText="Choose any caution notes that apply. This is not diagnosis or medical advice."
+                options={safetyNoteOptions}
+                selected={optionFields.safetyNote.selected}
+                other={optionFields.safetyNote.other}
+                otherLabel="Other medical or safety note"
+                otherPlaceholder="Optional: medications, health conditions, pregnancy, eating disorder history, or anything an AI should tell you to discuss with a qualified professional."
+                onSelectedChange={(selected) =>
+                  updateOptionField("safetyNote", { selected })
+                }
+                onOtherChange={(other) =>
+                  updateOptionField("safetyNote", { other })
+                }
               />
-              <TextAreaField
-                id="lifestyleConstraints"
+              <OptionSelectWithOther
+                groupId="lifestyle-constraints"
                 label="Lifestyle constraints"
-                value={values.lifestyleConstraints}
-                onChange={updateValue}
-                placeholder="Example: family dinners, work lunches, night shifts, travel, budget, food availability."
+                options={lifestyleConstraintOptions}
+                selected={optionFields.lifestyleConstraints.selected}
+                other={optionFields.lifestyleConstraints.other}
+                otherLabel="Other lifestyle constraints"
+                otherPlaceholder="Example: I eat with my family every night at 9 PM and travel for work."
+                onSelectedChange={(selected) =>
+                  updateOptionField("lifestyleConstraints", { selected })
+                }
+                onOtherChange={(other) =>
+                  updateOptionField("lifestyleConstraints", { other })
+                }
               />
             </FormSection>
 
