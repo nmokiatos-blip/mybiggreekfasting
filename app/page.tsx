@@ -15,24 +15,23 @@ export default function Home() {
     <main>
       <section className="relative min-h-[calc(100vh-112px)] overflow-hidden bg-white text-obsidian">
         <Image
-          src="/images/brand-hero.png"
+          src="/images/greek-island-hero.png"
           alt="Mediterranean ancestral fasting scene for My Big Greek Fasting"
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-72"
+          className="object-cover opacity-82"
         />
         <div className="absolute inset-0 hero-vignette" />
-        <div className="absolute inset-x-0 top-0 h-4 text-aegean greek-key" />
 
         <div className="relative z-10 mx-auto grid min-h-[calc(100vh-112px)] max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-12">
           <div>
             <p className="mb-5 max-w-2xl text-xs font-black uppercase tracking-[0.28em] text-deepAegean sm:text-sm">
               Ancestral health. Metabolic control. Food freedom.
             </p>
-            <h1 className="font-display text-5xl font-black leading-[0.98] text-deepAegean text-balance sm:text-6xl lg:text-7xl">
+            <h1 className="font-display text-5xl font-black leading-[0.98] text-deepAegean text-balance drop-shadow-[0_2px_0_rgba(255,255,255,0.72)] sm:text-6xl lg:text-7xl">
               {site.tagline}
-              <span className="block text-laurel">The door out of food prison.</span>
+              <span className="block text-aegean">The door out of food prison.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-obsidian/76 sm:text-xl">
               My Big Greek Fasting is not a Greek recipe site. It is a direct,
