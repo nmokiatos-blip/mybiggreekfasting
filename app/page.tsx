@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main>
-      <section className="relative min-h-[calc(100vh-112px)] overflow-hidden bg-white text-obsidian">
+      <section className="relative min-h-screen overflow-hidden bg-white text-obsidian">
         <Image
           src="/images/greek-island-hero.png"
           alt="Mediterranean ancestral fasting scene for My Big Greek Fasting"
@@ -24,14 +24,14 @@ export default function Home() {
         />
         <div className="absolute inset-0 hero-vignette" />
 
-        <div className="relative z-10 mx-auto grid min-h-[calc(100vh-112px)] max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-12">
-          <div>
+        <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-5 pb-16 pt-32 sm:px-8 sm:pt-36 lg:px-12">
+          <div className="w-full">
             <p className="mb-5 max-w-2xl text-xs font-black uppercase tracking-[0.28em] text-deepAegean sm:text-sm">
               Ancestral health. Metabolic control. Food freedom.
             </p>
-            <h1 className="font-display text-5xl font-black leading-[0.98] text-deepAegean text-balance drop-shadow-[0_2px_0_rgba(255,255,255,0.72)] sm:text-6xl lg:text-7xl">
-              {site.tagline}
-              <span className="block text-aegean">The door out of food prison.</span>
+            <h1 className="font-display text-[1.45rem] font-black leading-[0.98] text-deepAegean drop-shadow-[0_2px_0_rgba(255,255,255,0.72)] min-[390px]:text-[1.52rem] sm:text-5xl md:text-6xl xl:text-7xl">
+              <span className="block whitespace-nowrap">{site.tagline}</span>
+              <span className="block whitespace-nowrap text-aegean">The door out of food prison.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-obsidian/76 sm:text-xl">
               My Big Greek Fasting is not a Greek recipe site. It is a direct,
@@ -43,18 +43,6 @@ export default function Home() {
               <ButtonLink href="/fastos" variant="light">
                 Explore FastOS
               </ButtonLink>
-            </div>
-          </div>
-
-          <div className="hidden justify-end lg:flex">
-            <div className="relative aspect-square w-full max-w-[390px] overflow-hidden border border-aegean/18 bg-white/78 shadow-temple backdrop-blur">
-              <Image
-                src="/images/brand-mark.png"
-                alt="My Big Greek Fasting circular brand mark"
-                fill
-                sizes="430px"
-                className="object-cover"
-              />
             </div>
           </div>
         </div>
