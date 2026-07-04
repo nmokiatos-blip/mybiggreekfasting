@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ButtonLink } from "@/components/ButtonLink";
+import { FastOSAnnouncement } from "@/components/FastOSAnnouncement";
 import { Section } from "@/components/Section";
 import { freedoms, methodPillars, site } from "@/lib/site";
 
@@ -47,6 +48,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <FastOSAnnouncement />
 
       <Section eyebrow="Not keto tzatziki" title="Greek does not mean recipes. Greek means origin." surface="white">
         <p>
