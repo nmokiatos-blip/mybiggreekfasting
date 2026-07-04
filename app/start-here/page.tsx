@@ -33,16 +33,16 @@ export default function StartHerePage() {
           The first victory is not a long fast. The first victory is calm.
         </p>
       </Section>
-      <section className="bg-obsidian px-5 py-20 text-white sm:px-8 lg:px-12">
+      <section className="marble-surface px-5 py-20 text-obsidian sm:px-8 lg:px-12">
         <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-3">
           {[
             ["Simplify food", "Eat in a way that lowers cravings instead of feeding them."],
             ["Create space", "Let meals have edges. Let the body experience quiet."],
             ["Build trust", "Learn that you can miss a meal and still be steady."]
           ].map(([title, body]) => (
-            <article key={title} className="border border-white/14 bg-white/7 p-6">
-              <h2 className="font-display text-2xl font-black text-laurel">{title}</h2>
-              <p className="mt-3 leading-7 text-white/74">{body}</p>
+            <article key={title} className="border border-aegean/14 bg-white/82 p-6 shadow-[0_14px_40px_rgba(8,119,216,0.08)]">
+              <h2 className="font-display text-2xl font-black text-deepAegean">{title}</h2>
+              <p className="mt-3 leading-7 text-obsidian/74">{body}</p>
             </article>
           ))}
         </div>

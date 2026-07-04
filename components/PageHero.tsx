@@ -22,7 +22,7 @@ export function PageHero({
   secondary
 }: PageHeroProps) {
   return (
-    <section className="marble-surface px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
+    <section className="marble-surface border-b border-aegean/10 px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
       <div className="mx-auto max-w-6xl">
         <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-deepAegean">
           {eyebrow}

@@ -14,7 +14,7 @@ export function Section({
   surface = "plain"
 }: SectionProps) {
   const surfaceClass = dark
-    ? "bg-obsidian text-marble"
+    ? "bg-[linear-gradient(135deg,rgba(255,255,255,0.96),rgba(232,244,255,0.88))] text-obsidian border-y border-aegean/12"
     : surface === "marble"
       ? "marble-surface text-obsidian"
       : surface === "white"
@@ -28,7 +28,7 @@ export function Section({
           {eyebrow ? (
             <p
               className={`mb-4 text-xs font-black uppercase tracking-[0.26em] ${
-                dark ? "text-laurel" : "text-deepAegean"
+                dark ? "text-aegean" : "text-deepAegean"
               }`}
             >
               {eyebrow}

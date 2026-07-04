@@ -3,7 +3,7 @@ import { navItems, site } from "@/lib/site";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-obsidian/10 bg-marble/92 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-aegean/15 bg-white/92 shadow-[0_8px_30px_rgba(8,119,216,0.07)] backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-4 sm:px-8 lg:px-12">
         <Link
           href="/"
@@ -23,14 +23,14 @@ export function Header() {
         </nav>
         <Link
           href="/start-here"
-          className="hidden bg-deepAegean px-4 py-3 text-xs font-black uppercase tracking-[0.14em] text-white transition hover:bg-obsidian sm:inline-flex"
+          className="hidden bg-deepAegean px-4 py-3 text-xs font-black uppercase tracking-[0.14em] text-white shadow-temple transition hover:bg-aegean sm:inline-flex"
         >
           Start
         </Link>
       </div>
       <nav
         aria-label="Mobile navigation"
-        className="flex gap-3 overflow-x-auto border-t border-obsidian/10 px-5 py-3 text-[0.7rem] font-black uppercase tracking-[0.12em] text-obsidian/72 lg:hidden"
+        className="flex gap-3 overflow-x-auto border-t border-aegean/12 px-5 py-3 text-[0.7rem] font-black uppercase tracking-[0.12em] text-obsidian/72 lg:hidden"
       >
         {navItems.map((item) => (
           <Link key={item.href} href={item.href} className="shrink-0">

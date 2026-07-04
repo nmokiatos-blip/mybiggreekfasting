@@ -6,8 +6,8 @@
   --font-display: Georgia, "Times New Roman", serif;
   --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color-scheme: light;
-  background: #f7f4ed;
-  color: #111319;
+  background: #fffdf8;
+  color: #172033;
 }
 
 * {
@@ -22,22 +22,23 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    linear-gradient(135deg, rgba(7, 87, 213, 0.08), transparent 38%),
-    radial-gradient(circle at 82% 12%, rgba(200, 157, 25, 0.16), transparent 32%),
-    #f7f4ed;
-  color: #111319;
+    linear-gradient(180deg, rgba(8, 119, 216, 0.08), transparent 340px),
+    radial-gradient(circle at 86% 10%, rgba(183, 146, 42, 0.16), transparent 28%),
+    #fffdf8;
+  color: #172033;
   font-family: var(--font-sans);
 }
 
 ::selection {
-  background: #c89d19;
-  color: #111319;
+  background: #0877d8;
+  color: #ffffff;
 }
 
 .marble-surface {
   background:
-    linear-gradient(120deg, rgba(255, 255, 255, 0.74), rgba(222, 212, 194, 0.52)),
-    repeating-linear-gradient(115deg, rgba(17, 19, 25, 0.035) 0 1px, transparent 1px 16px);
+    linear-gradient(120deg, rgba(255, 255, 255, 0.92), rgba(251, 248, 239, 0.84)),
+    radial-gradient(circle at 14% 18%, rgba(8, 119, 216, 0.08), transparent 28%),
+    repeating-linear-gradient(115deg, rgba(6, 63, 140, 0.035) 0 1px, transparent 1px 18px);
 }
 
 .greek-key {
@@ -55,6 +56,6 @@ body {
 
 .hero-vignette {
   background:
-    linear-gradient(90deg, rgba(17, 19, 25, 0.96), rgba(17, 19, 25, 0.76) 48%, rgba(17, 19, 25, 0.28)),
-    linear-gradient(0deg, rgba(17, 19, 25, 0.24), rgba(17, 19, 25, 0.08));
+    linear-gradient(90deg, rgba(255, 253, 248, 0.98), rgba(255, 253, 248, 0.86) 46%, rgba(255, 253, 248, 0.36)),
+    linear-gradient(0deg, rgba(8, 119, 216, 0.14), rgba(255, 255, 255, 0.04));
 }

@@ -19,9 +19,9 @@ export default function NicksJourneyPage() {
         primary={{ href: "/start-here", label: "Start Here" }}
         secondary={{ href: "/contact", label: "Contact Nick" }}
       />
-      <section className="bg-deepAegean px-5 py-20 text-white sm:px-8 lg:px-12">
+      <section className="marble-surface px-5 py-20 text-obsidian sm:px-8 lg:px-12">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div className="relative aspect-[4/5] overflow-hidden border border-white/18">
+          <div className="relative aspect-[4/5] overflow-hidden border border-aegean/18 bg-white shadow-temple">
             <Image
               src="/images/brand-portrait.png"
               alt="Portrait for Nick's fasting journey"
@@ -30,7 +30,7 @@ export default function NicksJourneyPage() {
               className="object-cover"
             />
           </div>
-          <div className="space-y-6 text-lg leading-8 text-white/80">
+          <div className="space-y-6 text-lg leading-8 text-obsidian/76">
             <p>
               My Big Greek Fasting is about what happens when food stops being
               entertainment, medication, identity, panic button, and background
@@ -41,7 +41,7 @@ export default function NicksJourneyPage() {
               strong signals, sun, movement, discipline, feast, fast, and the
               confidence that the body can be trusted again.
             </p>
-            <p className="font-black text-laurel">
+            <p className="font-black text-deepAegean">
               Fasting did not make life smaller. It made the cage visible.
             </p>
           </div>

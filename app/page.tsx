@@ -13,28 +13,28 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main>
-      <section className="relative min-h-[calc(100vh-112px)] overflow-hidden bg-obsidian text-marble">
+      <section className="relative min-h-[calc(100vh-112px)] overflow-hidden bg-white text-obsidian">
         <Image
           src="/images/brand-hero.png"
           alt="Mediterranean ancestral fasting scene for My Big Greek Fasting"
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-55"
+          className="object-cover opacity-72"
         />
         <div className="absolute inset-0 hero-vignette" />
         <div className="absolute inset-x-0 top-0 h-4 text-aegean greek-key" />
 
         <div className="relative z-10 mx-auto grid min-h-[calc(100vh-112px)] max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-12">
           <div>
-            <p className="mb-5 max-w-2xl text-xs font-black uppercase tracking-[0.28em] text-laurel sm:text-sm">
+            <p className="mb-5 max-w-2xl text-xs font-black uppercase tracking-[0.28em] text-deepAegean sm:text-sm">
               Ancestral health. Metabolic control. Food freedom.
             </p>
-            <h1 className="font-display text-5xl font-black leading-[0.98] text-white text-balance sm:text-6xl lg:text-7xl">
+            <h1 className="font-display text-5xl font-black leading-[0.98] text-deepAegean text-balance sm:text-6xl lg:text-7xl">
               {site.tagline}
               <span className="block text-laurel">The door out of food prison.</span>
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/84 sm:text-xl">
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-obsidian/76 sm:text-xl">
               My Big Greek Fasting is not a Greek recipe site. It is a direct,
               personal rebellion against hunger noise, sugar dependency,
               constant eating, and the lie that you are fragile without snacks.
@@ -48,7 +48,7 @@ export default function Home() {
           </div>
 
           <div className="hidden justify-end lg:flex">
-            <div className="relative aspect-square w-full max-w-[390px] overflow-hidden border border-white/18 bg-white/8 shadow-temple backdrop-blur">
+            <div className="relative aspect-square w-full max-w-[390px] overflow-hidden border border-aegean/18 bg-white/78 shadow-temple backdrop-blur">
               <Image
                 src="/images/brand-mark.png"
                 alt="My Big Greek Fasting circular brand mark"
@@ -96,36 +96,36 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-obsidian px-5 py-20 text-marble sm:px-8 lg:px-12">
+      <section className="bg-white px-5 py-20 text-obsidian sm:px-8 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 grid gap-8 lg:grid-cols-[0.86fr_1.14fr]">
             <div>
-              <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-laurel">
+              <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-deepAegean">
                 The method
               </p>
-              <h2 className="font-display text-4xl font-black leading-tight text-white text-balance sm:text-5xl">
+              <h2 className="font-display text-4xl font-black leading-tight text-obsidian text-balance sm:text-5xl">
                 Discipline should simplify life, not become another cage.
               </h2>
             </div>
-            <p className="text-lg leading-8 text-white/74 sm:text-xl">
+            <p className="text-lg leading-8 text-obsidian/74 sm:text-xl">
               The method starts before the fast: remove the food chaos, quiet the
               body, build a rhythm, and stop treating hunger like an emergency.
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {methodPillars.map((pillar) => (
-              <article key={pillar.title} className="border border-white/14 bg-white/7 p-6">
-                <h3 className="font-display text-2xl font-black text-laurel">{pillar.title}</h3>
-                <p className="mt-3 text-base leading-7 text-white/74">{pillar.body}</p>
+              <article key={pillar.title} className="border border-aegean/14 bg-marble p-6 shadow-[0_14px_40px_rgba(8,119,216,0.08)]">
+                <h3 className="font-display text-2xl font-black text-deepAegean">{pillar.title}</h3>
+                <p className="mt-3 text-base leading-7 text-obsidian/74">{pillar.body}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-deepAegean px-5 py-20 text-white sm:px-8 lg:px-12">
+      <section className="marble-surface px-5 py-20 text-obsidian sm:px-8 lg:px-12">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
-          <div className="relative aspect-[4/5] overflow-hidden border border-white/18 bg-white/8">
+          <div className="relative aspect-[4/5] overflow-hidden border border-aegean/18 bg-white shadow-temple">
             <Image
               src="/images/brand-portrait.png"
               alt="Nick's ancestral fasting portrait"
@@ -135,13 +135,13 @@ export default function Home() {
             />
           </div>
           <div>
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-laurel">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-deepAegean">
               Nick&apos;s Journey
             </p>
             <h2 className="font-display text-4xl font-black leading-tight text-balance sm:text-6xl">
               Personal, not guru-style.
             </h2>
-            <p className="mt-6 text-lg leading-8 text-white/80 sm:text-xl">
+            <p className="mt-6 text-lg leading-8 text-obsidian/76 sm:text-xl">
               This project comes from lived experience: rebuilding discipline,
               relearning hunger, rejecting constant eating, and finding a
               simpler way to live in a noisy food culture.
