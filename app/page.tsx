@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ButtonLink } from "@/components/ButtonLink";
 import { FastOSAnnouncement } from "@/components/FastOSAnnouncement";
 import { GreekKeyBorder } from "@/components/GreekKeyBorder";
-import { freedoms, methodPillars, site } from "@/lib/site";
+import { freedoms, methodPillars } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Fasting = Freedom",
@@ -20,52 +20,95 @@ const originSymbols = [
 
 const methodIcons = ["Fire", "Sun", "Shield", "Laurel"];
 
+const heroSymbols = [
+  {
+    label: "Ancestral Wisdom",
+    path: "M12 3v3m0 12v3m6.36-15.36-2.12 2.12M7.76 16.24l-2.12 2.12M21 12h-3M6 12H3m15.36 6.36-2.12-2.12M7.76 7.76 5.64 5.64M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"
+  },
+  {
+    label: "Local Food",
+    path: "M3 15c2.5-3 5.5-3 8 0s5.5 3 10 0M3 10c2.5-3 5.5-3 8 0s5.5 3 10 0"
+  },
+  {
+    label: "Discipline",
+    path: "M12 3 5 6v5c0 5 3.5 8.5 7 10 3.5-1.5 7-5 7-10V6l-7-3Zm0 5v6l4 2"
+  },
+  {
+    label: "Freedom",
+    path: "M7 21h10M9 21V11a3 3 0 0 1 6 0v10M6 11h12M12 3v4"
+  }
+];
+
 export default function Home() {
   return (
     <main>
-      <section className="aegean-surface relative min-h-screen overflow-hidden text-marble">
+      <section className="relative min-h-[760px] overflow-hidden bg-[#061A26] text-marble sm:min-h-[680px] lg:min-h-[85vh]">
         <Image
-          src="/images/greek-island-hero.png"
-          alt="Aegean stone, sea, and sun for My Big Greek Fasting"
+          src="/images/hero-nick-corfu-clean.png"
+          alt="Nick in Corfu overlooking the sea, representing Greek ancestral fasting and freedom."
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-26 mix-blend-screen"
+          className="object-cover object-[54%_center] sm:object-[66%_center] lg:object-center"
         />
-        <div className="absolute inset-0 hero-vignette" />
-        <div className="absolute inset-x-0 bottom-0 h-6 text-laurel/75 greek-meander" aria-hidden="true" />
-        <div className="absolute right-8 top-28 hidden h-48 w-48 rounded-full border border-laurel/25 sun-disc opacity-80 lg:block" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,26,38,0.96)_0%,rgba(6,26,38,0.82)_38%,rgba(6,26,38,0.34)_67%,rgba(6,26,38,0.06)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(214,168,74,0.08),transparent_24rem),linear-gradient(0deg,rgba(6,26,38,0.36),transparent_34%,rgba(6,26,38,0.1))]" />
+        <div className="absolute inset-x-0 top-[88px] h-4 text-laurel/45 greek-meander sm:top-[72px]" aria-hidden="true" />
+        <div className="absolute inset-x-0 bottom-0 h-5 text-laurel/55 greek-meander" aria-hidden="true" />
 
-        <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-5 pb-20 pt-36 sm:px-8 lg:px-12">
-          <div className="max-w-4xl">
-            <p className="mb-5 max-w-2xl text-xs font-black uppercase tracking-[0.28em] text-laurel sm:text-sm">
-              Ancient discipline. Mediterranean signal. Modern AI fasting OS.
+        <div className="relative z-10 mx-auto flex min-h-[760px] max-w-7xl items-center px-5 pb-20 pt-40 sm:min-h-[680px] sm:px-8 sm:pt-36 lg:min-h-[85vh] lg:px-12">
+          <div className="max-w-[50rem]">
+            <p className="mb-5 text-xs font-black uppercase tracking-[0.28em] text-laurel sm:text-sm">
+              My Big Greek Fasting
             </p>
-            <h1 className="font-display text-6xl font-black leading-[0.92] text-marble text-balance sm:text-7xl lg:text-8xl">
-              {site.tagline.replace(".", "")}
+            <h1 className="font-display text-[2.55rem] font-black leading-[1] text-marble text-balance sm:text-6xl lg:text-[3rem] xl:text-[3.3rem]">
+              <span className="block">Greek is the source code.</span>
+              <span className="mt-2 block">Fasting is the operating system.</span>
+              <span className="mt-2 block text-laurel">Freedom is the output.</span>
             </h1>
-            <p className="mt-5 font-display text-3xl font-black leading-tight text-laurel sm:text-5xl">
-              The door out of food prison.
+            <p className="mt-5 font-display text-2xl font-black leading-tight text-laurel sm:text-3xl">
+              Fasting = Freedom. The door out of food prison.
             </p>
-            <div className="mt-8 max-w-3xl space-y-5 text-lg leading-8 text-marble/82 sm:text-xl">
-              <p>
-                This is not a Greek recipe site. It is not punishment, calorie
-                worship, or another fragile diet identity.
-              </p>
-              <p>
-                It is a rebellion against food noise, sugar dependency, constant
-                eating, snack culture, and the lie that hunger is an emergency.
-              </p>
-              <p className="font-black text-white">
-                Greek means origin: sun, sea, olive oil, mineral water, fire,
-                fasting, restraint, and freedom.
-              </p>
-            </div>
-            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-              <ButtonLink href="/start-here">Start Here</ButtonLink>
-              <ButtonLink href="/fastos" variant="light">
+            <p className="mt-5 max-w-xl text-base leading-7 text-marble/85 sm:text-lg">
+              Not a Greek recipe site. Not a diet cult. Not calorie punishment.
+              A fasting method built from ancestral wisdom, local food,
+              discipline, and freedom.
+            </p>
+            <div className="mt-7 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="/start-here"
+                className="inline-flex min-h-12 items-center justify-center bg-laurel px-6 py-3 text-center text-xs font-black uppercase tracking-[0.16em] text-[#061A26] shadow-temple transition hover:bg-[#D6A84A]"
+              >
+                Start Here
+              </a>
+              <a
+                href="/fastos"
+                className="inline-flex min-h-12 items-center justify-center border border-laurel/70 bg-[#061A26]/32 px-6 py-3 text-center text-xs font-black uppercase tracking-[0.16em] text-marble transition hover:bg-laurel/15 hover:text-[#D6A84A]"
+              >
                 Explore FastOS
-              </ButtonLink>
+              </a>
+            </div>
+            <div className="mt-6 grid max-w-2xl grid-cols-2 gap-2 sm:grid-cols-4">
+              {heroSymbols.map((symbol) => (
+                <div
+                  key={symbol.label}
+                  className="flex items-center gap-2 border border-laurel/20 bg-[#061A26]/34 px-3 py-2 text-[0.68rem] font-black uppercase tracking-[0.1em] text-marble/85 backdrop-blur"
+                >
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    className="h-5 w-5 shrink-0 text-laurel"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1.8"
+                  >
+                    <path d={symbol.path} />
+                  </svg>
+                  <span>{symbol.label}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
