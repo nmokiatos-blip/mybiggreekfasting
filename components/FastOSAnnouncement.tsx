@@ -3,85 +3,107 @@ import Link from "next/link";
 import { ButtonLink } from "@/components/ButtonLink";
 import { GreekKeyBorder } from "@/components/GreekKeyBorder";
 
-const features = [
+const architecture = [
   {
-    title: "Fill the Form",
-    body: "Tell FastOS about your real life, food environment, cravings, schedule, and fasting level."
+    step: "01",
+    title: "FastOS Method Page",
+    role: "source code",
+    body: "The philosophy, rules, water principle, local food translation, safety logic, and fasting progression."
   },
   {
-    title: "Generate the Prompt",
-    body: "FastOS builds a structured command file that points your AI to the method first."
+    step: "02",
+    title: "Prompt Generator",
+    role: "command file",
+    body: "A structured instruction set that tells your AI how to think before it answers."
   },
   {
-    title: "Copy It",
-    body: "One click. Your personal fasting prompt is ready."
+    step: "03",
+    title: "User's AI",
+    role: "execution engine",
+    body: "ChatGPT, Claude, Gemini, Grok, or any assistant you trust to run the method."
   },
   {
-    title: "Paste Into Any AI",
-    body: "Use ChatGPT, Claude, Gemini, Grok, or any AI assistant you prefer."
+    step: "04",
+    title: "User's answers",
+    role: "personal context",
+    body: "Your country, cravings, schedule, fasting level, goals, constraints, and real food environment."
   }
 ];
 
 export function FastOSAnnouncement() {
   return (
-    <section className="marble-surface border-y border-aegean/12 px-5 py-20 sm:px-8 lg:px-12">
+    <section className="aegean-surface border-y border-laurel/25 px-5 py-24 text-marble sm:px-8 lg:px-12">
       <div className="mx-auto max-w-7xl">
-        <div className="relative overflow-hidden border border-aegean/16 bg-white/86 p-5 shadow-temple sm:p-8 lg:p-10">
-          <GreekKeyBorder className="absolute inset-x-0 top-3 h-5 text-blue-400 opacity-60" />
-          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-            <div className="relative mx-auto aspect-square w-full max-w-[460px] overflow-hidden border border-limestone bg-marble shadow-[0_18px_55px_rgba(8,119,216,0.12)]">
-              <Image
-                src="/images/fastos-announcement.png"
-                alt="FastOS prompt generator logo"
-                fill
-                sizes="(min-width: 1024px) 460px, 100vw"
-                className="object-contain p-6"
-              />
+        <div className="relative overflow-hidden border border-laurel/30 bg-obsidian/22 p-5 shadow-temple backdrop-blur sm:p-8 lg:p-10">
+          <GreekKeyBorder className="absolute inset-x-0 top-3 h-5 text-laurel/70" />
+          <div className="grid gap-12 pt-6 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
+            <div>
+              <div className="relative mx-auto aspect-square w-full max-w-[440px] overflow-hidden border border-laurel/30 bg-marble/95 shadow-[0_18px_55px_rgba(0,0,0,0.22)]">
+                <Image
+                  src="/images/fastos-announcement.png"
+                  alt="FastOS prompt generator logo"
+                  fill
+                  sizes="(min-width: 1024px) 440px, 100vw"
+                  className="object-contain p-6"
+                />
+              </div>
+              <div className="mt-6 border border-laurel/25 bg-white/[0.045] p-5">
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-laurel">
+                  Ancient wisdom meets AI
+                </p>
+                <p className="mt-3 font-display text-2xl font-black leading-tight text-marble">
+                  Not a tracker. Not a calculator. A fasting operating system.
+                </p>
+              </div>
             </div>
 
             <div>
               <div className="mb-5 flex flex-wrap gap-2">
-                <span className="border border-laurel/40 bg-laurel/12 px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-obsidian">
+                <span className="border border-laurel/45 bg-laurel/14 px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-laurel">
                   NEW
                 </span>
-                <span className="border border-aegean/25 bg-aegean/10 px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-deepAegean">
+                <span className="border border-marble/20 bg-white/[0.055] px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-marble">
                   AI Prompt Generator
                 </span>
               </div>
-              <h2 className="font-display text-4xl font-black leading-tight text-deepAegean text-balance sm:text-5xl lg:text-6xl">
+              <h2 className="font-display text-5xl font-black leading-tight text-marble text-balance sm:text-6xl lg:text-7xl">
                 Introducing FastOS
               </h2>
-              <p className="mt-4 max-w-2xl text-xl font-black leading-8 text-aegean sm:text-2xl">
+              <p className="mt-4 max-w-2xl text-2xl font-black leading-9 text-laurel">
                 The fasting operating system for your favorite AI.
               </p>
-              <div className="mt-6 max-w-3xl space-y-5 text-lg leading-8 text-obsidian/76">
+              <div className="mt-6 max-w-3xl space-y-5 text-lg leading-8 text-marble/78">
                 <p>
-                  FastOS is not another diet calculator. It is not a macro tracker. It is not a generic meal-plan generator.
-                </p>
-                <p>
-                  FastOS helps you build a personalized fasting prompt based on your real life: your country, your food environment, your cravings, your schedule, your fasting level, your goals, and your constraints.
-                </p>
-                <p>
-                  The FastOS Method is the source code. The prompt generator is the command file. Your AI is the execution engine.
+                  FastOS helps you build a personalized fasting prompt based on
+                  your real life: country, food environment, cravings, schedule,
+                  fasting level, goals, and constraints.
                 </p>
                 <p>
-                  Fill the form. Generate your prompt. Copy it. Paste it into ChatGPT, Claude, Gemini, Grok, or any AI you want.
-                </p>
-                <p className="font-black text-deepAegean">
-                  Stop asking generic AI questions.
-                </p>
-                <p className="font-display text-3xl font-black leading-tight text-deepAegean text-balance">
-                  Give AI your fasting operating system.
+                  Stop asking generic AI questions. Give AI your fasting
+                  operating system.
                 </p>
               </div>
 
-              <div className="mt-8 grid gap-3 sm:grid-cols-2">
-                {features.map((feature) => (
-                  <article key={feature.title} className="border border-aegean/14 bg-marble/70 p-5">
-                    <h3 className="font-display text-xl font-black text-deepAegean">
-                      {feature.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-6 text-obsidian/72">{feature.body}</p>
+              <div className="mt-9 grid gap-3">
+                {architecture.map((item) => (
+                  <article
+                    key={item.step}
+                    className="grid gap-4 border border-laurel/24 bg-white/[0.055] p-5 sm:grid-cols-[4.5rem_1fr] sm:items-start"
+                  >
+                    <div className="flex h-14 w-14 items-center justify-center border border-laurel/45 bg-deepAegean font-display text-xl font-black text-laurel">
+                      {item.step}
+                    </div>
+                    <div>
+                      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                        <h3 className="font-display text-2xl font-black text-marble">
+                          {item.title}
+                        </h3>
+                        <p className="text-xs font-black uppercase tracking-[0.2em] text-laurel">
+                          {item.role}
+                        </p>
+                      </div>
+                      <p className="mt-2 text-sm leading-6 text-marble/68">{item.body}</p>
+                    </div>
                   </article>
                 ))}
               </div>
@@ -90,12 +112,12 @@ export function FastOSAnnouncement() {
                 <ButtonLink href="/fastos">Try FastOS</ButtonLink>
                 <Link
                   href="/fastos-method"
-                  className="inline-flex font-black uppercase tracking-[0.14em] text-deepAegean transition hover:text-aegean"
+                  className="inline-flex font-black uppercase tracking-[0.14em] text-laurel transition hover:text-marble"
                 >
                   Read the Method
                 </Link>
               </div>
-              <p className="mt-5 text-sm font-bold leading-6 text-obsidian/60">
+              <p className="mt-5 text-sm font-bold leading-6 text-marble/56">
                 No login. No API. No data stored. Just your context, your prompt, your AI.
               </p>
             </div>

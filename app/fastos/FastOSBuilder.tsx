@@ -56,6 +56,7 @@ type HudField = {
 type HudSection = {
   letter: string;
   title: string;
+  icon: string;
   fields: HudField[];
 };
 
@@ -462,15 +463,29 @@ Keep the plan practical, human, and realistic. Do not make it a generic diet cal
 }
 
 function FormSection({
+  letter,
+  icon,
   title,
   children
 }: {
+  letter: string;
+  icon: string;
   title: string;
   children: React.ReactNode;
 }) {
   return (
-    <section className="border border-limestone bg-white p-5 shadow-[0_18px_50px_rgba(8,119,216,0.07)] sm:p-7">
-      <h3 className="font-display text-2xl font-black text-deepAegean">{title}</h3>
+    <section className="parchment-card border border-laurel/24 p-5 shadow-[0_18px_50px_rgba(11,61,92,0.08)] sm:p-7">
+      <div className="mb-5 flex items-center gap-4 border-b border-laurel/18 pb-5">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-laurel/45 bg-deepAegean text-[0.62rem] font-black uppercase tracking-[0.1em] text-laurel">
+          {icon}
+        </div>
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-terracotta">
+            Module {letter}
+          </p>
+          <h3 className="font-display text-2xl font-black text-deepAegean">{title}</h3>
+        </div>
+      </div>
       <div className="mt-5 grid gap-5">{children}</div>
     </section>
   );
@@ -493,7 +508,7 @@ function TextField({ id, label, value, placeholder, onChange }: FieldProps) {
         value={value}
         onChange={(event) => onChange(id, event.target.value)}
         placeholder={placeholder}
-        className="w-full border border-limestone bg-marble px-4 py-3 text-base text-obsidian outline-none transition placeholder:text-obsidian/42 focus:border-aegean focus:bg-white focus:ring-2 focus:ring-aegean/18"
+        className="w-full border border-limestone bg-marble px-4 py-3 text-base text-obsidian outline-none transition placeholder:text-obsidian/42 focus:border-laurel focus:bg-white focus:ring-2 focus:ring-laurel/18"
       />
     </div>
   );
@@ -519,7 +534,7 @@ function SelectField({
         id={id}
         value={value}
         onChange={(event) => onChange(id, event.target.value)}
-        className="w-full border border-limestone bg-marble px-4 py-3 text-base text-obsidian outline-none transition focus:border-aegean focus:bg-white focus:ring-2 focus:ring-aegean/18"
+        className="w-full border border-limestone bg-marble px-4 py-3 text-base text-obsidian outline-none transition focus:border-laurel focus:bg-white focus:ring-2 focus:ring-laurel/18"
       >
         <option value="">Choose one</option>
         {options.map((option) => (
@@ -584,8 +599,8 @@ function OptionSelectWithOther({
               onClick={() => toggleOption(option)}
               className={
                 isSelected
-                  ? "border border-deepAegean bg-deepAegean px-4 py-2 text-sm font-black text-white shadow-[0_8px_20px_rgba(8,119,216,0.16)] transition hover:bg-aegean"
-                  : "border border-limestone bg-marble px-4 py-2 text-sm font-bold text-obsidian/76 transition hover:border-aegean/45 hover:bg-white hover:text-deepAegean"
+                  ? "border border-laurel bg-laurel/18 px-4 py-2 text-sm font-black text-obsidian shadow-[0_8px_20px_rgba(176,138,60,0.18)] transition hover:bg-laurel/24"
+                  : "border border-limestone bg-marble px-4 py-2 text-sm font-bold text-obsidian/76 shadow-[inset_0_-2px_0_rgba(23,23,23,0.04)] transition hover:border-laurel/55 hover:bg-white hover:text-deepAegean"
               }
             >
               {option}
@@ -594,14 +609,14 @@ function OptionSelectWithOther({
         })}
       </div>
 
-      <label className="grid gap-2">
+      <label className="grid gap-2 border border-laurel/16 bg-white/54 p-4">
         <span className="text-sm font-black text-obsidian">{otherLabel}</span>
         <textarea
           value={other}
           onChange={(event) => onOtherChange(event.target.value)}
           placeholder={otherPlaceholder}
           rows={3}
-          className="min-h-24 w-full resize-y border border-limestone bg-marble px-4 py-3 text-base leading-7 text-obsidian outline-none transition placeholder:text-obsidian/42 focus:border-aegean focus:bg-white focus:ring-2 focus:ring-aegean/18"
+          className="min-h-24 w-full resize-y border border-limestone bg-marble px-4 py-3 text-base leading-7 text-obsidian outline-none transition placeholder:text-obsidian/42 focus:border-laurel focus:bg-white focus:ring-2 focus:ring-laurel/18"
         />
       </label>
     </fieldset>
@@ -634,13 +649,17 @@ function CheckboxGroup({
         {options.map((option) => (
           <label
             key={option}
-            className="flex min-h-12 items-center gap-3 border border-limestone bg-marble px-4 py-3 text-sm font-bold text-obsidian/80"
+            className={
+              selected.includes(option)
+                ? "flex min-h-12 items-center gap-3 border border-laurel bg-laurel/16 px-4 py-3 text-sm font-black text-obsidian shadow-[0_8px_20px_rgba(176,138,60,0.14)]"
+                : "flex min-h-12 items-center gap-3 border border-limestone bg-marble px-4 py-3 text-sm font-bold text-obsidian/80 transition hover:border-laurel/55 hover:bg-white"
+            }
           >
             <input
               type="checkbox"
               checked={selected.includes(option)}
               onChange={() => toggle(option)}
-              className="h-4 w-4 accent-aegean"
+              className="h-4 w-4 accent-laurel"
             />
             <span>{option}</span>
           </label>
@@ -660,7 +679,7 @@ function SectionHud({ sections }: { sections: HudSection[] }) {
 
   return (
     <aside className="lg:sticky lg:top-24">
-      <div className="border border-aegean/16 bg-white p-4 shadow-[0_18px_50px_rgba(8,119,216,0.08)] sm:p-5">
+      <div className="border border-laurel/24 bg-white p-4 shadow-[0_18px_50px_rgba(11,61,92,0.08)] sm:p-5">
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.22em] text-laurel">
@@ -670,14 +689,14 @@ function SectionHud({ sections }: { sections: HudSection[] }) {
               What FastOS knows
             </h3>
           </div>
-          <p className="shrink-0 border border-aegean/18 bg-aegean/8 px-3 py-2 text-xs font-black text-deepAegean">
+          <p className="shrink-0 border border-laurel/30 bg-laurel/10 px-3 py-2 text-xs font-black text-deepAegean">
             {completedFields}/{totalFields}
           </p>
         </div>
 
         <div className="mt-4 h-2 bg-marble" aria-hidden="true">
           <div
-            className="h-full bg-aegean transition-all"
+            className="h-full bg-laurel transition-all"
             style={{ width: `${Math.round((completedFields / totalFields) * 100)}%` }}
           />
         </div>
@@ -691,6 +710,7 @@ function SectionHud({ sections }: { sections: HudSection[] }) {
               <section key={section.letter} className="border border-limestone bg-marble p-3">
                 <div className="flex items-center justify-between gap-3">
                   <h4 className="text-sm font-black text-deepAegean">
+                    <span className="mr-2 text-laurel">{section.icon}</span>
                     {section.letter}. {section.title}
                   </h4>
                   <span
@@ -847,6 +867,7 @@ export function FastOSBuilder() {
       {
         letter: "A",
         title: "About You",
+        icon: "ID",
         fields: [
           { label: "Name", value: values.name },
           { label: "Age", value: values.ageRange },
@@ -857,6 +878,7 @@ export function FastOSBuilder() {
       {
         letter: "B",
         title: "Food Reality",
+        icon: "Fish",
         fields: [
           { label: "Often eats", value: values.currentFood },
           { label: "Problem foods", value: values.problemFoods },
@@ -866,6 +888,7 @@ export function FastOSBuilder() {
       {
         letter: "C",
         title: "Fasting",
+        icon: "Hour",
         fields: [
           { label: "Level", value: values.fastingLevel },
           { label: "Effects", value: values.fastingEffects },
@@ -875,6 +898,7 @@ export function FastOSBuilder() {
       {
         letter: "D",
         title: "Goals",
+        icon: "Peak",
         fields: [
           { label: "Main goal", value: values.mainGoal },
           { label: "Fasting gift", value: values.fastingGift },
@@ -884,6 +908,7 @@ export function FastOSBuilder() {
       {
         letter: "E",
         title: "Constraints",
+        icon: "Shield",
         fields: [
           { label: "Safety", value: values.safetyNote },
           { label: "Lifestyle", value: values.lifestyleConstraints }
@@ -892,6 +917,7 @@ export function FastOSBuilder() {
       {
         letter: "F",
         title: "Style",
+        icon: "Map",
         fields: [
           { label: "Guide style", value: values.guideStyle },
           { label: "Approach", value: values.preferredApproach }
@@ -956,16 +982,16 @@ export function FastOSBuilder() {
 
   return (
     <main>
-      <section className="marble-surface border-b border-aegean/10 px-5 pb-16 pt-32 sm:px-8 sm:pb-20 sm:pt-36 lg:px-12">
+      <section className="aegean-surface border-b border-laurel/25 px-5 pb-16 pt-32 text-marble sm:px-8 sm:pb-20 sm:pt-36 lg:px-12">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
           <div>
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-deepAegean">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-laurel">
               FastOS
             </p>
-            <h1 className="font-display text-5xl font-black leading-[1.02] text-obsidian text-balance sm:text-7xl">
+            <h1 className="font-display text-5xl font-black leading-[1.02] text-marble text-balance sm:text-7xl">
               Build your personal fasting prompt.
             </h1>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-obsidian/76 sm:text-xl">
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-marble/76 sm:text-xl">
               Your body is not a generic machine. Your fasting method should
               not be generic either. FastOS helps you create a prompt based on
               your real life, your food environment, your discipline level, and
@@ -974,27 +1000,27 @@ export function FastOSBuilder() {
             <div className="mt-8">
               <a
                 href="#prompt-builder"
-                className="inline-flex bg-deepAegean px-6 py-4 text-sm font-black uppercase tracking-[0.16em] text-white shadow-temple transition hover:bg-aegean"
+                className="inline-flex bg-laurel px-6 py-4 text-sm font-black uppercase tracking-[0.16em] text-obsidian shadow-temple transition hover:bg-marble"
               >
                 Create My Prompt
               </a>
               <a
                 href="/fastos-method"
-                className="mt-4 inline-flex border border-deepAegean/35 bg-white/55 px-6 py-4 text-sm font-black uppercase tracking-[0.16em] text-deepAegean transition hover:bg-white sm:ml-4 sm:mt-0"
+                className="mt-4 inline-flex border border-laurel/45 bg-white/[0.06] px-6 py-4 text-sm font-black uppercase tracking-[0.16em] text-marble transition hover:bg-white/12 sm:ml-4 sm:mt-0"
               >
                 Read FastOS Method
               </a>
             </div>
           </div>
-          <div className="border border-aegean/14 bg-white/76 p-6 shadow-[0_24px_70px_rgba(8,119,216,0.13)] backdrop-blur">
+          <div className="border border-laurel/28 bg-white/[0.055] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.18)] backdrop-blur">
             <p className="text-sm font-black uppercase tracking-[0.22em] text-laurel">
               Practical operating system
             </p>
-            <p className="mt-4 font-display text-3xl font-black leading-tight text-deepAegean">
+            <p className="mt-4 font-display text-3xl font-black leading-tight text-marble">
               Fasting, food, discipline, and ancestral health - adapted to your
               actual life.
             </p>
-            <div className="greek-key mt-7 h-4 text-aegean/80" aria-hidden="true" />
+            <div className="greek-meander mt-7 h-4 text-laurel/80" aria-hidden="true" />
           </div>
         </div>
       </section>
@@ -1076,7 +1102,7 @@ export function FastOSBuilder() {
                 generatePrompt();
               }}
             >
-              <FormSection title="A. About You">
+              <FormSection letter="A" icon="ID" title="About You">
                 <div className="grid gap-5 md:grid-cols-2">
                   <TextField
                     id="name"
@@ -1113,7 +1139,7 @@ export function FastOSBuilder() {
                 />
               </FormSection>
 
-              <FormSection title="B. Current Food Reality">
+              <FormSection letter="B" icon="Fish" title="Current Food Reality">
                 <OptionSelectWithOther
                   groupId="current-food"
                   label="What do you currently eat most often?"
@@ -1153,7 +1179,7 @@ export function FastOSBuilder() {
                 />
               </FormSection>
 
-              <FormSection title="C. Fasting Experience">
+              <FormSection letter="C" icon="Hour" title="Fasting Experience">
                 <SelectField
                   id="fastingLevel"
                   label="Current fasting level"
@@ -1176,7 +1202,7 @@ export function FastOSBuilder() {
                 />
               </FormSection>
 
-              <FormSection title="D. Goals">
+              <FormSection letter="D" icon="Peak" title="Goals">
                 <SelectField
                   id="mainGoal"
                   label="Main goal"
@@ -1216,7 +1242,7 @@ export function FastOSBuilder() {
                 />
               </FormSection>
 
-              <FormSection title="E. Constraints">
+              <FormSection letter="E" icon="Shield" title="Constraints">
                 <OptionSelectWithOther
                   groupId="safety-note"
                   label="Medical / safety note"
@@ -1250,7 +1276,7 @@ export function FastOSBuilder() {
                 />
               </FormSection>
 
-              <FormSection title="F. Desired Style">
+              <FormSection letter="F" icon="Map" title="Desired Style">
                 <SelectField
                   id="guideStyle"
                   label="How should the AI guide you?"

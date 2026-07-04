@@ -16,7 +16,7 @@ export function ButtonLink({
     secondary:
       "border border-deepAegean bg-white/70 text-deepAegean hover:bg-deepAegean hover:text-white",
     light:
-      "border border-deepAegean bg-white/78 text-deepAegean hover:bg-deepAegean hover:text-white"
+      "border border-laurel/55 bg-marble/78 text-deepAegean hover:bg-laurel hover:text-white"
   };
 
   return (

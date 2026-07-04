@@ -3,7 +3,6 @@ import Image from "next/image";
 import { ButtonLink } from "@/components/ButtonLink";
 import { FastOSAnnouncement } from "@/components/FastOSAnnouncement";
 import { GreekKeyBorder } from "@/components/GreekKeyBorder";
-import { Section } from "@/components/Section";
 import { freedoms, methodPillars, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -12,35 +11,57 @@ export const metadata: Metadata = {
     "My Big Greek Fasting is about ancestral health, fasting, food freedom, metabolic control, and Nick's personal journey."
 };
 
+const originSymbols = [
+  ["Sun", "rhythm", "Eat with the day. Fast with the night."],
+  ["Sea", "minerals", "Salt, mineral water, movement, and Mediterranean signal."],
+  ["Olive oil", "ancestral fat", "Simple fat, simple food, old-world restraint."],
+  ["Fasting", "freedom", "The ancient discipline of needing food less."]
+];
+
+const methodIcons = ["Fire", "Sun", "Shield", "Laurel"];
+
 export default function Home() {
   return (
     <main>
-      <section className="relative min-h-screen overflow-hidden bg-white text-obsidian">
+      <section className="aegean-surface relative min-h-screen overflow-hidden text-marble">
         <Image
           src="/images/greek-island-hero.png"
-          alt="Mediterranean ancestral fasting scene for My Big Greek Fasting"
+          alt="Aegean stone, sea, and sun for My Big Greek Fasting"
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-82"
+          className="object-cover opacity-26 mix-blend-screen"
         />
         <div className="absolute inset-0 hero-vignette" />
+        <div className="absolute inset-x-0 bottom-0 h-6 text-laurel/75 greek-meander" aria-hidden="true" />
+        <div className="absolute right-8 top-28 hidden h-48 w-48 rounded-full border border-laurel/25 sun-disc opacity-80 lg:block" />
 
-        <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-5 pb-16 pt-32 sm:px-8 sm:pt-36 lg:px-12">
-          <div className="w-full">
-            <p className="mb-5 max-w-2xl text-xs font-black uppercase tracking-[0.28em] text-deepAegean sm:text-sm">
-              Ancestral health. Metabolic control. Food freedom.
+        <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-5 pb-20 pt-36 sm:px-8 lg:px-12">
+          <div className="max-w-4xl">
+            <p className="mb-5 max-w-2xl text-xs font-black uppercase tracking-[0.28em] text-laurel sm:text-sm">
+              Ancient discipline. Mediterranean signal. Modern AI fasting OS.
             </p>
-            <h1 className="font-display text-[1.45rem] font-black leading-[0.98] text-deepAegean drop-shadow-[0_2px_0_rgba(255,255,255,0.72)] min-[390px]:text-[1.52rem] sm:text-5xl md:text-6xl xl:text-7xl">
-              <span className="block whitespace-nowrap">{site.tagline}</span>
-              <span className="block whitespace-nowrap text-aegean">The door out of food prison.</span>
+            <h1 className="font-display text-6xl font-black leading-[0.92] text-marble text-balance sm:text-7xl lg:text-8xl">
+              {site.tagline.replace(".", "")}
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-obsidian/76 sm:text-xl">
-              My Big Greek Fasting is not a Greek recipe site. It is a direct,
-              personal rebellion against hunger noise, sugar dependency,
-              constant eating, and the lie that you are fragile without snacks.
+            <p className="mt-5 font-display text-3xl font-black leading-tight text-laurel sm:text-5xl">
+              The door out of food prison.
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-8 max-w-3xl space-y-5 text-lg leading-8 text-marble/82 sm:text-xl">
+              <p>
+                This is not a Greek recipe site. It is not punishment, calorie
+                worship, or another fragile diet identity.
+              </p>
+              <p>
+                It is a rebellion against food noise, sugar dependency, constant
+                eating, snack culture, and the lie that hunger is an emergency.
+              </p>
+              <p className="font-black text-white">
+                Greek means origin: sun, sea, olive oil, mineral water, fire,
+                fasting, restraint, and freedom.
+              </p>
+            </div>
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
               <ButtonLink href="/start-here">Start Here</ButtonLink>
               <ButtonLink href="/fastos" variant="light">
                 Explore FastOS
@@ -52,63 +73,112 @@ export default function Home() {
 
       <FastOSAnnouncement />
 
-      <GreekKeyBorder className="my-8 text-blue-400 opacity-70" />
-
-      <Section eyebrow="Not keto tzatziki" title="Greek does not mean recipes. Greek means origin." surface="white">
-        <p>
-          Greek means ancestral wisdom, simplicity, discipline, sun, sea, olive
-          oil, fasting, and freedom.
-        </p>
-        <p>
-          This is not a website for learning a keto version of tzatziki. This is
-          about using old signals in a modern world: hunger, feasting, restraint,
-          movement, salt, sunlight, and simple food.
-        </p>
-        <p className="font-black text-deepAegean">
-          The goal is not food perfection. The goal is food freedom.
-        </p>
-      </Section>
-
-      <section className="marble-surface px-5 py-20 sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-10 max-w-3xl">
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-deepAegean">
-              Freedom from food noise
-            </p>
-            <h2 className="font-display text-4xl font-black leading-tight text-obsidian text-balance sm:text-5xl">
-              Fasting is not just eating less. It is needing food less.
-            </h2>
+      <section className="stone-surface px-5 py-24 text-obsidian sm:px-8 lg:px-12">
+        <div className="mx-auto max-w-7xl">
+          <GreekKeyBorder className="mb-10 text-laurel/70" />
+          <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+            <div>
+              <p className="mb-5 text-xs font-black uppercase tracking-[0.26em] text-terracotta">
+                Origin manifesto
+              </p>
+              <h2 className="font-display text-5xl font-black leading-[0.98] text-deepAegean text-balance sm:text-7xl">
+                Greek does not mean recipes. Greek means origin.
+              </h2>
+            </div>
+            <div className="space-y-6 text-xl leading-9 text-obsidian/76">
+              <p>
+                Greek means ancestral wisdom, simplicity, discipline, sun, sea,
+                olive oil, fasting, and freedom.
+              </p>
+              <p className="font-display text-3xl font-black leading-tight text-obsidian">
+                This is not keto tzatziki. This is ancestral signal in a modern world.
+              </p>
+            </div>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {freedoms.map((item) => (
-              <div key={item} className="border border-limestone bg-white/72 p-5 text-lg font-black text-obsidian">
-                {item}
-              </div>
+
+          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {originSymbols.map(([symbol, title, body]) => (
+              <article
+                key={title}
+                className="parchment-card border border-laurel/24 p-6 shadow-[0_16px_50px_rgba(23,23,23,0.07)]"
+              >
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-laurel">
+                  {symbol}
+                </p>
+                <h3 className="mt-4 font-display text-3xl font-black text-deepAegean">
+                  {title}
+                </h3>
+                <p className="mt-3 text-base leading-7 text-obsidian/70">{body}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-white px-5 py-20 text-obsidian sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-10 grid gap-8 lg:grid-cols-[0.86fr_1.14fr]">
+      <section className="bg-obsidian px-5 py-24 text-marble sm:px-8 lg:px-12">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
             <div>
-              <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-deepAegean">
+              <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-laurel">
+                Food prison
+              </p>
+              <h2 className="font-display text-5xl font-black leading-tight text-balance sm:text-6xl">
+                Modern food teaches panic.
+              </h2>
+            </div>
+            <p className="text-xl leading-9 text-marble/72">
+              The cage is not just what you eat. It is the noise around eating:
+              the clock, cravings, fear, habit, social pressure, and the
+              constant command to snack.
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {freedoms.map((item) => (
+              <div
+                key={item}
+                className="border border-marble/12 bg-white/[0.045] p-5 text-lg font-black text-marble shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
+              >
+                <span className="mb-4 block h-1 w-12 bg-terracotta" aria-hidden="true" />
+                {item}
+              </div>
+            ))}
+          </div>
+          <div className="mt-14 border-l-4 border-laurel bg-marble/[0.06] p-6 sm:p-8">
+            <p className="font-display text-3xl font-black leading-tight text-laurel sm:text-5xl">
+              Fasting is not just eating less. It is needing food less.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="marble-surface px-5 py-24 text-obsidian sm:px-8 lg:px-12">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 grid gap-8 lg:grid-cols-[0.86fr_1.14fr]">
+            <div>
+              <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-terracotta">
                 The method
               </p>
-              <h2 className="font-display text-4xl font-black leading-tight text-obsidian text-balance sm:text-5xl">
+              <h2 className="font-display text-5xl font-black leading-tight text-obsidian text-balance sm:text-6xl">
                 Discipline should simplify life, not become another cage.
               </h2>
             </div>
-            <p className="text-lg leading-8 text-obsidian/74 sm:text-xl">
+            <p className="text-xl leading-9 text-obsidian/74">
               The method starts before the fast: remove the food chaos, quiet the
               body, build a rhythm, and stop treating hunger like an emergency.
             </p>
           </div>
-          <div className="grid gap-4 md:grid-cols-2">
-            {methodPillars.map((pillar) => (
-              <article key={pillar.title} className="border border-aegean/14 bg-marble p-6 shadow-[0_14px_40px_rgba(8,119,216,0.08)]">
-                <h3 className="font-display text-2xl font-black text-deepAegean">{pillar.title}</h3>
+          <div className="grid gap-5 md:grid-cols-2">
+            {methodPillars.map((pillar, index) => (
+              <article
+                key={pillar.title}
+                className="group parchment-card border border-laurel/20 p-7 shadow-[0_18px_60px_rgba(11,61,92,0.08)] transition duration-300 hover:-translate-y-1 hover:border-laurel/55 hover:shadow-[0_24px_70px_rgba(11,61,92,0.14)]"
+              >
+                <div className="mb-6 flex h-12 w-12 items-center justify-center border border-laurel/45 bg-deepAegean text-[0.65rem] font-black uppercase tracking-[0.12em] text-laurel">
+                  {methodIcons[index]}
+                </div>
+                <h3 className="font-display text-3xl font-black text-deepAegean">
+                  {pillar.title}
+                </h3>
                 <p className="mt-3 text-base leading-7 text-obsidian/74">{pillar.body}</p>
               </article>
             ))}
@@ -116,9 +186,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="marble-surface px-5 py-20 text-obsidian sm:px-8 lg:px-12">
-        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
-          <div className="relative aspect-[4/5] overflow-hidden border border-aegean/18 bg-white shadow-temple">
+      <section className="stone-surface px-5 py-24 text-obsidian sm:px-8 lg:px-12">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
+          <div className="relative aspect-[4/5] overflow-hidden border border-laurel/30 bg-marble shadow-temple">
             <Image
               src="/images/brand-portrait.png"
               alt="Nick's ancestral fasting portrait"
@@ -126,18 +196,27 @@ export default function Home() {
               sizes="(min-width: 1024px) 430px, 100vw"
               className="object-cover"
             />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-obsidian/82 to-transparent p-6 text-marble">
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-laurel">
+                Lived experience
+              </p>
+              <p className="mt-2 font-display text-2xl font-black">No guru costume.</p>
+            </div>
           </div>
-          <div>
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-deepAegean">
+          <div className="parchment-card border border-laurel/22 p-7 shadow-[0_18px_60px_rgba(23,23,23,0.08)] sm:p-10">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-terracotta">
               Nick&apos;s Journey
             </p>
-            <h2 className="font-display text-4xl font-black leading-tight text-balance sm:text-6xl">
-              Personal, not guru-style.
+            <h2 className="font-display text-5xl font-black leading-tight text-balance sm:text-6xl">
+              Personal, direct, rebellious, disciplined.
             </h2>
-            <p className="mt-6 text-lg leading-8 text-obsidian/76 sm:text-xl">
+            <p className="mt-6 text-xl leading-9 text-obsidian/76">
               This project comes from lived experience: rebuilding discipline,
               relearning hunger, rejecting constant eating, and finding a
               simpler way to live in a noisy food culture.
+            </p>
+            <p className="mt-5 text-lg font-black leading-8 text-deepAegean">
+              Not a cult. Not a hack. A method for becoming less controlled by food.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <ButtonLink href="/nicks-journey">Read the Journey</ButtonLink>

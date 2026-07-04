@@ -8,19 +8,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        aegean: "#0877d8",
-        deepAegean: "#063f8c",
-        obsidian: "#172033",
-        marble: "#fbf8ef",
-        limestone: "#e8dfcf",
-        laurel: "#b7922a"
+        aegean: "#0B3D5C",
+        deepAegean: "#082C43",
+        obsidian: "#171717",
+        marble: "#F7F2E8",
+        limestone: "#D8CCB8",
+        laurel: "#B08A3C",
+        terracotta: "#A65332",
+        stone: "#EFE6D6"
       },
       fontFamily: {
         display: ["var(--font-display)"],
         sans: ["var(--font-sans)"]
       },
       boxShadow: {
-        temple: "0 24px 70px rgba(8, 119, 216, 0.16)"
+        temple: "0 24px 70px rgba(11, 61, 92, 0.18)"
       }
     }
   },
