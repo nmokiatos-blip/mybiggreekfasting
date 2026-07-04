@@ -1,11 +1,31 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ButtonLink } from "@/components/ButtonLink";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "FastOS Method",
   description:
-    "The FastOS Method is the fasting operating system for the AI age: a readable architecture for turning real life into a personal fasting protocol."
+    "The FastOS Method is the fasting operating system for the AI age: a readable architecture for turning real life into a personal fasting protocol.",
+  alternates: {
+    canonical: "/fastos-method"
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true
+    }
+  },
+  openGraph: {
+    title: "FastOS Method",
+    description:
+      "The complete FastOS Method: fasting architecture, food noise principles, local availability intelligence, water rules, refeed strategy, and AI guidance.",
+    url: `${site.url}/fastos-method`,
+    siteName: site.name,
+    type: "article"
+  }
 };
 
 const principles = [
@@ -244,7 +264,7 @@ export default function FastOSMethodPage() {
             FastOS Method
           </p>
           <h1 className="max-w-5xl font-display text-4xl font-black leading-[1.02] text-obsidian text-balance sm:text-6xl">
-            The fasting operating system for the AI age.
+            FastOS Method: the fasting operating system for the AI age.
           </h1>
           <p className="mt-6 max-w-4xl text-lg leading-8 text-obsidian/74 sm:text-xl">
             FastOS is not a diet app, a calorie calculator, or a generic fasting

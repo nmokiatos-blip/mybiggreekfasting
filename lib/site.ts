@@ -10,6 +10,7 @@ export const navItems = [
   { href: "/start-here", label: "Start Here" },
   { href: "/the-method", label: "The Method" },
   { href: "/fastos", label: "FastOS" },
+  { href: "/fastos-method", label: "FastOS Method" },
   { href: "/nicks-journey", label: "Nick's Journey" },
   { href: "/ai-prompt-builder", label: "AI Prompt Builder" },
   { href: "/faq", label: "FAQ" },
