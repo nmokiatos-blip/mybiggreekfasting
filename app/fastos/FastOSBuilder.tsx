@@ -12,6 +12,15 @@ type FormValues = {
   currentFood: string;
   problemFoods: string;
   ancestralFoods: string;
+  fishAvailable: string;
+  seafoodAvailable: string;
+  meatsAvailable: string;
+  fatsAvailable: string;
+  eggsDairyAvailable: string;
+  waterAvailable: string;
+  waterPreference: string;
+  localFoodsToConsider: string;
+  localFoodsCannotFind: string;
   foodEnvironment: string;
   fastingLevel: string;
   fastingEffects: string[];
@@ -30,6 +39,13 @@ type OptionFieldKey =
   | "currentFood"
   | "problemFoods"
   | "ancestralFoods"
+  | "fishAvailable"
+  | "seafoodAvailable"
+  | "meatsAvailable"
+  | "fatsAvailable"
+  | "eggsDairyAvailable"
+  | "waterAvailable"
+  | "waterPreference"
   | "fastingGift"
   | "controlledBy"
   | "safetyNote"
@@ -58,6 +74,15 @@ const initialValues: FormValues = {
   currentFood: "",
   problemFoods: "",
   ancestralFoods: "",
+  fishAvailable: "",
+  seafoodAvailable: "",
+  meatsAvailable: "",
+  fatsAvailable: "",
+  eggsDairyAvailable: "",
+  waterAvailable: "",
+  waterPreference: "",
+  localFoodsToConsider: "",
+  localFoodsCannotFind: "",
   foodEnvironment: "",
   fastingLevel: "",
   fastingEffects: [],
@@ -76,6 +101,13 @@ const initialOptionFields: OptionFieldsState = {
   currentFood: { selected: [], other: "" },
   problemFoods: { selected: [], other: "" },
   ancestralFoods: { selected: [], other: "" },
+  fishAvailable: { selected: [], other: "" },
+  seafoodAvailable: { selected: [], other: "" },
+  meatsAvailable: { selected: [], other: "" },
+  fatsAvailable: { selected: [], other: "" },
+  eggsDairyAvailable: { selected: [], other: "" },
+  waterAvailable: { selected: [], other: "" },
+  waterPreference: { selected: [], other: "" },
   fastingGift: { selected: [], other: "" },
   controlledBy: { selected: [], other: "" },
   safetyNote: { selected: [], other: "" },
@@ -195,6 +227,104 @@ const ancestralFoodOptions = [
   "Fermented foods",
   "Local traditional meats",
   "Farmers market foods"
+];
+
+const fishAvailableOptions = [
+  "Sardines",
+  "Mackerel",
+  "Salmon",
+  "Tuna",
+  "Cod",
+  "Sea bass",
+  "Snapper",
+  "Anchovies",
+  "Trout",
+  "Local white fish",
+  "Canned fish in olive oil",
+  "Other"
+];
+
+const seafoodAvailableOptions = [
+  "Shrimp",
+  "Crab",
+  "Dungeness crab",
+  "Lobster",
+  "Oysters",
+  "Mussels",
+  "Clams",
+  "Scallops",
+  "Octopus",
+  "Squid",
+  "Cuttlefish",
+  "Local shellfish",
+  "Other"
+];
+
+const meatsAvailableOptions = [
+  "Beef",
+  "Lamb",
+  "Goat",
+  "Pork",
+  "Chicken",
+  "Duck",
+  "Turkey",
+  "Rabbit",
+  "Bison",
+  "Venison / game meat",
+  "Organ meats / liver",
+  "Local traditional meats",
+  "Other"
+];
+
+const fatsAvailableOptions = [
+  "Beef fat / tallow",
+  "Lamb fat",
+  "Pork fat / lard",
+  "Duck fat",
+  "Butter",
+  "Ghee",
+  "Olive oil",
+  "Coconut oil",
+  "Animal fat from cooking meat",
+  "Other"
+];
+
+const eggsDairyAvailableOptions = [
+  "Eggs",
+  "Pasture eggs",
+  "Butter",
+  "Cheese",
+  "Goat cheese",
+  "Sheep cheese",
+  "Yogurt",
+  "Kefir",
+  "Raw dairy where legal",
+  "I avoid dairy",
+  "Other"
+];
+
+const waterAvailableOptions = [
+  "Still mineral water",
+  "Sparkling mineral water",
+  "Naturally carbonated sparkling water",
+  "Glass bottle mineral water",
+  "Glass bottle sparkling water",
+  "Local spring water",
+  "Imported mineral water",
+  "I mostly drink tap water",
+  "I mostly drink plastic bottled water",
+  "Other"
+];
+
+const waterPreferenceOptions = [
+  "Prefer glass bottle only",
+  "Avoid plastic bottles when possible",
+  "Avoid flavored waters",
+  "Avoid sweetened waters",
+  "Avoid artificial sweeteners",
+  "Avoid diet soda",
+  "Prefer naturally carbonated water",
+  "Prefer mineral-rich water"
 ];
 
 const fastingGiftOptions = [
@@ -409,6 +539,17 @@ Current food reality:
 - Real ancestral foods available where I live: ${safeValue(values.ancestralFoods)}
 - Food environment: ${safeValue(values.foodEnvironment)}
 
+Local availability details:
+- Fish available near me: ${safeValue(values.fishAvailable)}
+- Seafood / shellfish available near me: ${safeValue(values.seafoodAvailable)}
+- Meats available near me: ${safeValue(values.meatsAvailable)}
+- Animal fats / cooking fats available near me: ${safeValue(values.fatsAvailable)}
+- Eggs / dairy available near me: ${safeValue(values.eggsDairyAvailable)}
+- Mineral water and sparkling water available near me: ${safeValue(values.waterAvailable)}
+- Water quality preference: ${safeValue(values.waterPreference)}
+- Local foods I want the AI to consider: ${safeValue(values.localFoodsToConsider)}
+- Local foods I cannot easily find: ${safeValue(values.localFoodsCannotFind)}
+
 Fasting experience:
 - Current fasting level: ${safeValue(values.fastingLevel)}
 - What happens when I try to fast: ${listValue(values.fastingEffects)}
@@ -432,14 +573,37 @@ Please produce:
 2. Food Environment Analysis
 3. Food Noise and Craving Analysis
 4. Local Ancestral Food Translation
-5. Step-by-Step Adaptation Plan
-6. Restaurant and Social Strategy
-7. Refeed Strategy
-8. Safety and Medical Warning Section
-9. Questions Before Precision
-10. Simple 7-Day Transition Plan
-11. Longer-Term FastOS Progression
-12. Personal FastOS Rules
+5. Local Availability Map
+6. Step-by-Step Adaptation Plan
+7. Restaurant and Social Strategy
+8. Refeed Strategy
+9. Safety and Medical Warning Section
+10. Questions Before Precision
+11. Simple 7-Day Transition Plan
+12. Longer-Term FastOS Progression
+13. Personal FastOS Rules
+
+The Local Availability Map should organize:
+- Best Local Proteins: specific fish, seafood, meats, eggs, and animal foods available to me.
+- Best Local Fats: animal fats, butter, ghee, olive oil, or other acceptable fats available locally.
+- Best Local Waters: mineral water, sparkling mineral water, naturally carbonated water, glass bottle options, and what to avoid.
+- Foods to Investigate Locally: foods likely available in my region but not confirmed by me.
+- Foods to Avoid or Treat Carefully: ultra-processed meats, sweet drinks, seed-oil fried foods, fake keto products, diet soda, sugar-free junk, flavored waters, and snack foods.
+
+When giving food suggestions, do not stay generic. Translate "meat," "fish," "seafood," "fat," and "water" into the specific foods available in my region.
+
+If I list local options, prioritize those.
+
+If I do not list enough local options, infer likely regional possibilities based on my country / region, but clearly say they are suggestions to investigate.
+
+Prefer real local ancestral foods over imported diet ideology.
+
+For water:
+- Prefer mineral water.
+- Prefer glass bottles when realistically available.
+- Prefer naturally carbonated sparkling water when I want sparkling water.
+- Avoid sweetened waters, flavored waters, diet soda, sugar-free junk drinks, and ultra-processed drinks.
+- Do not recommend plastic bottles as the ideal default if glass bottle mineral water is available.
 
 Important behavior:
 - If I am a beginner, do not immediately prescribe OMAD or extended fasting.
@@ -488,6 +652,22 @@ function TextField({ id, label, value, placeholder, onChange }: FieldProps) {
         onChange={(event) => onChange(id, event.target.value)}
         placeholder={placeholder}
         className="w-full border border-limestone bg-marble px-4 py-3 text-base text-obsidian outline-none transition placeholder:text-obsidian/42 focus:border-aegean focus:bg-white focus:ring-2 focus:ring-aegean/18"
+      />
+    </div>
+  );
+}
+
+function TextAreaField({ id, label, value, placeholder, onChange }: FieldProps) {
+  return (
+    <div className="grid gap-2">
+      <FieldLabel htmlFor={id}>{label}</FieldLabel>
+      <textarea
+        id={id}
+        value={value}
+        onChange={(event) => onChange(id, event.target.value)}
+        placeholder={placeholder}
+        rows={4}
+        className="min-h-28 w-full resize-y border border-limestone bg-marble px-4 py-3 text-base leading-7 text-obsidian outline-none transition placeholder:text-obsidian/42 focus:border-aegean focus:bg-white focus:ring-2 focus:ring-aegean/18"
       />
     </div>
   );
@@ -1002,6 +1182,151 @@ export function FastOSBuilder() {
                 onOtherChange={(other) =>
                   updateOptionField("ancestralFoods", { other })
                 }
+              />
+              <div className="border border-aegean/14 bg-marble p-5">
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-laurel">
+                  Local Availability Details
+                </p>
+                <h4 className="mt-2 font-display text-2xl font-black text-deepAegean">
+                  Tell FastOS what foods actually exist around you.
+                </h4>
+                <div className="mt-3 space-y-2 text-sm leading-6 text-obsidian/68">
+                  <p>
+                    FastOS works better when the AI knows not only your country,
+                    but the actual foods available around you. Be specific if you
+                    can. If you do not know, leave it blank and the AI will
+                    suggest what to investigate.
+                  </p>
+                  <p className="font-black text-deepAegean">
+                    Do not copy Nick&apos;s plate. Build your local ancestral
+                    plate. Specific is better than generic.
+                  </p>
+                  <p>
+                    Fish means nothing until we know which fish. Water matters:
+                    prefer mineral water, naturally sparkling when desired, and
+                    glass bottles when realistically available.
+                  </p>
+                </div>
+              </div>
+              <OptionSelectWithOther
+                groupId="fish-available"
+                label="Fish available near me"
+                options={fishAvailableOptions}
+                selected={optionFields.fishAvailable.selected}
+                other={optionFields.fishAvailable.other}
+                otherLabel="Other fish details"
+                otherPlaceholder="Example: local rockfish, fresh anchovies, canned sardines in olive oil."
+                onSelectedChange={(selected) =>
+                  updateOptionField("fishAvailable", { selected })
+                }
+                onOtherChange={(other) =>
+                  updateOptionField("fishAvailable", { other })
+                }
+              />
+              <OptionSelectWithOther
+                groupId="seafood-available"
+                label="Seafood / shellfish available near me"
+                options={seafoodAvailableOptions}
+                selected={optionFields.seafoodAvailable.selected}
+                other={optionFields.seafoodAvailable.other}
+                otherLabel="Other seafood details"
+                otherPlaceholder="Example: local crab, oysters, shrimp, squid, market shellfish."
+                onSelectedChange={(selected) =>
+                  updateOptionField("seafoodAvailable", { selected })
+                }
+                onOtherChange={(other) =>
+                  updateOptionField("seafoodAvailable", { other })
+                }
+              />
+              <OptionSelectWithOther
+                groupId="meats-available"
+                label="Meats available near me"
+                options={meatsAvailableOptions}
+                selected={optionFields.meatsAvailable.selected}
+                other={optionFields.meatsAvailable.other}
+                otherLabel="Other meat details"
+                otherPlaceholder="Example: goat, rabbit, local sausages without fillers, butcher meat, game."
+                onSelectedChange={(selected) =>
+                  updateOptionField("meatsAvailable", { selected })
+                }
+                onOtherChange={(other) =>
+                  updateOptionField("meatsAvailable", { other })
+                }
+              />
+              <OptionSelectWithOther
+                groupId="fats-available"
+                label="Animal fats / cooking fats available near me"
+                options={fatsAvailableOptions}
+                selected={optionFields.fatsAvailable.selected}
+                other={optionFields.fatsAvailable.other}
+                otherLabel="Other fat details"
+                otherPlaceholder="Example: suet from butcher, duck fat, local butter, rendered animal fat."
+                onSelectedChange={(selected) =>
+                  updateOptionField("fatsAvailable", { selected })
+                }
+                onOtherChange={(other) =>
+                  updateOptionField("fatsAvailable", { other })
+                }
+              />
+              <OptionSelectWithOther
+                groupId="eggs-dairy-available"
+                label="Eggs / dairy available near me"
+                options={eggsDairyAvailableOptions}
+                selected={optionFields.eggsDairyAvailable.selected}
+                other={optionFields.eggsDairyAvailable.other}
+                otherLabel="Other eggs / dairy details"
+                otherPlaceholder="Example: village eggs, goat yogurt, sheep cheese, raw dairy where legal."
+                onSelectedChange={(selected) =>
+                  updateOptionField("eggsDairyAvailable", { selected })
+                }
+                onOtherChange={(other) =>
+                  updateOptionField("eggsDairyAvailable", { other })
+                }
+              />
+              <OptionSelectWithOther
+                groupId="water-available"
+                label="Mineral water and sparkling water available near me"
+                options={waterAvailableOptions}
+                selected={optionFields.waterAvailable.selected}
+                other={optionFields.waterAvailable.other}
+                otherLabel="Other water details"
+                otherPlaceholder="Example: glass bottle mineral water, naturally sparkling local water, mostly tap water."
+                onSelectedChange={(selected) =>
+                  updateOptionField("waterAvailable", { selected })
+                }
+                onOtherChange={(other) =>
+                  updateOptionField("waterAvailable", { other })
+                }
+              />
+              <OptionSelectWithOther
+                groupId="water-preference"
+                label="Water quality preference"
+                helperText="Choose all that matter to you."
+                options={waterPreferenceOptions}
+                selected={optionFields.waterPreference.selected}
+                other={optionFields.waterPreference.other}
+                otherLabel="Other water preferences"
+                otherPlaceholder="Example: I can get glass bottles at home, but restaurants usually offer plastic bottles."
+                onSelectedChange={(selected) =>
+                  updateOptionField("waterPreference", { selected })
+                }
+                onOtherChange={(other) =>
+                  updateOptionField("waterPreference", { other })
+                }
+              />
+              <TextAreaField
+                id="localFoodsToConsider"
+                label="Local foods I want the AI to consider"
+                value={values.localFoodsToConsider}
+                onChange={updateValue}
+                placeholder="Example: In my area I can find Dungeness crab, oysters, salmon, grass-fed beef, bison, eggs, and glass bottle sparkling mineral water."
+              />
+              <TextAreaField
+                id="localFoodsCannotFind"
+                label="Local foods I cannot easily find"
+                value={values.localFoodsCannotFind}
+                onChange={updateValue}
+                placeholder="Example: I cannot easily find lamb, goat, sardines, raw dairy, or good olive oil."
               />
               <SelectField
                 id="foodEnvironment"

@@ -39,6 +39,10 @@ const architecture = [
     body: "Whether the person is ready for OMAD, 24h, 48h, 72h, or needs a transition phase."
   },
   {
+    title: "Local Availability",
+    body: "The specific meats, fish, seafood, fats, waters, mineral waters, sparkling waters, eggs, dairy, traditional foods, and restaurant-safe options realistically available in the user's region."
+  },
+  {
     title: "Local Ancestral Foods",
     body: "Real foods available in the user's country or region."
   },
@@ -116,6 +120,79 @@ const localFoodExamples = [
     place: "United States",
     foods:
       "beef, eggs, bacon without sugar, sardines, butter, local meat, mineral water, black coffee."
+  }
+];
+
+const availabilityExamples = [
+  {
+    place: "San Francisco Bay Area",
+    foods: [
+      "Dungeness crab",
+      "oysters",
+      "wild salmon",
+      "sardines",
+      "grass-fed beef",
+      "bison",
+      "pasture eggs",
+      "butter",
+      "mineral water in glass bottles",
+      "naturally sparkling mineral water"
+    ],
+    translation:
+      "Do not tell this person only \"eat fish.\" Tell them to build around crab, oysters, salmon, sardines, beef, bison, eggs, and mineral water."
+  },
+  {
+    place: "France",
+    foods: [
+      "oysters",
+      "duck",
+      "beef",
+      "lamb",
+      "sardines",
+      "eggs",
+      "butter",
+      "cheese if tolerated",
+      "mineral water",
+      "naturally sparkling water in glass bottles"
+    ],
+    translation:
+      "Do not force Greek foods. France has its own ancestral plate."
+  },
+  {
+    place: "Greece",
+    foods: [
+      "sardines",
+      "mackerel",
+      "octopus",
+      "lamb",
+      "eggs",
+      "feta",
+      "yogurt",
+      "olive oil",
+      "horta",
+      "mineral water",
+      "Greek coffee"
+    ],
+    translation:
+      "Greek is the source code for Nick's method, but it is not the mandatory menu for everyone."
+  },
+  {
+    place: "Venezuela / Caribbean Coast",
+    foods: [
+      "local fish",
+      "seafood",
+      "shrimp",
+      "crab where available",
+      "beef",
+      "chicken",
+      "eggs",
+      "animal fat",
+      "simple vegetables",
+      "mineral water",
+      "traditional market foods"
+    ],
+    translation:
+      "Build the fasting system from coastal foods, market foods, animal protein, mineral water, and reduced sugar/rice dependency."
   }
 ];
 
@@ -231,8 +308,8 @@ export default function FastOSMethodPage() {
             <div className="border border-aegean/18 bg-deepAegean p-5 text-white sm:p-7">
               <p className="font-display text-2xl font-black leading-tight sm:text-3xl">
                 FastOS = Identity + Food Environment + Metabolic State + Fasting
-                Readiness + Local Ancestral Foods + Refeed Strategy + Personal
-                Rhythm + AI Guidance
+                Readiness + Local Availability + Local Ancestral Foods + Refeed
+                Strategy + Personal Rhythm + AI Guidance
               </p>
             </div>
             <div className="grid gap-4 md:grid-cols-2">
@@ -291,7 +368,128 @@ export default function FastOSMethodPage() {
             </p>
           </MethodSection>
 
-          <MethodSection id="food-noise" eyebrow="06" title="The Food Noise Principle">
+          <MethodSection
+            id="local-availability"
+            eyebrow="06"
+            title="The Local Availability Layer"
+          >
+            <p>
+              FastOS does not stop at saying &quot;eat meat,&quot; &quot;eat
+              fish,&quot; or &quot;drink mineral water.&quot;
+            </p>
+            <p className="font-black text-deepAegean">FastOS asks:</p>
+            <ul className="grid gap-3">
+              {[
+                "Which fish are actually available where you live?",
+                "Which seafood belongs to your region?",
+                "Which meats are realistic, affordable, and culturally normal?",
+                "Which animal fats are available?",
+                "Which eggs, dairy, or fermented animal foods are traditional or tolerated?",
+                "Which mineral waters are available, preferably in glass bottles?",
+                "Which sparkling waters are naturally carbonated, not artificially sweetened or flavored?",
+                "Which foods are local ancestral foods, and which are imported diet ideology?"
+              ].map((question) => (
+                <li key={question} className="border border-limestone bg-marble p-4 font-bold text-obsidian/82">
+                  {question}
+                </li>
+              ))}
+            </ul>
+            <p>
+              The goal is not to copy Nick&apos;s Greek plate. In Greece, the
+              plate may include sardines, mackerel, octopus, lamb, feta, yogurt,
+              olive oil, horta, mineral water, and Greek coffee. In the San
+              Francisco Bay Area, the plate may include Dungeness crab, wild
+              salmon, sardines, oysters, grass-fed beef, bison, pasture eggs,
+              butter, and mineral water in glass bottles.
+            </p>
+            <p>
+              In France, the plate may include oysters, duck, beef, lamb,
+              sardines, eggs, butter, cheese if tolerated, mineral water, and
+              naturally sparkling water in glass bottles. In the Caribbean or
+              coastal Latin America, the plate may include local fish, seafood,
+              beef, chicken, eggs, animal fat, simple vegetables, mineral water,
+              and traditional market foods.
+            </p>
+            <p className="font-black text-deepAegean">
+              FastOS must always translate the method into the user&apos;s local
+              reality.
+            </p>
+            <div className="grid gap-4 md:grid-cols-3">
+              {[
+                ["Generic category", "Fish"],
+                ["FastOS translation", "What fish is actually available to this person, in this region, at this price, in this culture?"],
+                ["Generic category", "Meat"],
+                ["FastOS translation", "Which meats are realistic here: beef, lamb, goat, pork, bison, duck, chicken, rabbit, game, organ meats, or local traditional meats?"],
+                ["Generic category", "Water"],
+                ["FastOS translation", "Which mineral waters are available? Is sparkling water naturally carbonated? Is it sold in glass bottles? Does it contain sugar, sweeteners, flavoring, or additives?"]
+              ].map(([label, text]) => (
+                <article key={`${label}-${text}`} className="border border-limestone bg-white p-5">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-aegean">
+                    {label}
+                  </p>
+                  <p className="mt-2 text-base font-bold leading-7 text-obsidian/78">
+                    {text}
+                  </p>
+                </article>
+              ))}
+            </div>
+            <p>FastOS food translation must be:</p>
+            <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-4">
+              {[
+                "local",
+                "ancestral",
+                "practical",
+                "affordable when possible",
+                "culturally realistic",
+                "low-noise",
+                "fasting-supportive",
+                "not dependent on imported diet trends"
+              ].map((rule) => (
+                <div key={rule} className="border border-aegean/14 bg-marble p-4 text-sm font-black text-deepAegean">
+                  {rule}
+                </div>
+              ))}
+            </div>
+            <div className="border border-aegean/20 bg-deepAegean p-5 text-white">
+              <h3 className="font-display text-2xl font-black">
+                Local Availability Rule
+              </h3>
+              <p className="mt-3 text-base leading-7">
+                Do not tell the user to eat generic &quot;fish&quot; or generic
+                &quot;meat&quot; if their region allows more precision.
+              </p>
+              <p className="mt-3 text-base leading-7">
+                Name the specific local options whenever possible. The AI should
+                help the user discover their ancestral plate, not copy someone
+                else&apos;s menu.
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2">
+              {availabilityExamples.map((example) => (
+                <article key={example.place} className="border border-limestone bg-marble p-5">
+                  <h3 className="font-display text-2xl font-black text-deepAegean">
+                    {example.place}
+                  </h3>
+                  <p className="mt-3 text-sm font-black uppercase tracking-[0.16em] text-laurel">
+                    Possible FastOS foods
+                  </p>
+                  <ul className="mt-3 grid gap-2 text-base leading-7 text-obsidian/76">
+                    {example.foods.map((food) => (
+                      <li key={food}>{food}</li>
+                    ))}
+                  </ul>
+                  <p className="mt-4 text-base leading-7 text-obsidian">
+                    <span className="font-black text-deepAegean">
+                      FastOS translation:{" "}
+                    </span>
+                    {example.translation}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </MethodSection>
+
+          <MethodSection id="food-noise" eyebrow="07" title="The Food Noise Principle">
             <p>
               Many people fail fasting because they begin from chaos. If someone
               is eating sugar, pasta, pizza, bread, fast food, snacks, desserts,
@@ -307,7 +505,7 @@ export default function FastOSMethodPage() {
             </div>
           </MethodSection>
 
-          <MethodSection id="refeed" eyebrow="07" title="The Refeed Principle">
+          <MethodSection id="refeed" eyebrow="08" title="The Refeed Principle">
             <p>
               Refeed is not revenge. Refeed is not a cheat meal. Refeed is not a
               reward for suffering. Refeed is the continuation of the fast.
@@ -320,7 +518,7 @@ export default function FastOSMethodPage() {
 
           <MethodSection
             id="social-reality"
-            eyebrow="08"
+            eyebrow="09"
             title="The Restaurant and Social Reality Principle"
           >
             <p>
@@ -330,7 +528,7 @@ export default function FastOSMethodPage() {
             </p>
           </MethodSection>
 
-          <MethodSection id="safety" eyebrow="09" title="The Safety Principle">
+          <MethodSection id="safety" eyebrow="10" title="The Safety Principle">
             <p>
               Fasting can be powerful and may require professional medical
               guidance, especially for:
@@ -348,7 +546,7 @@ export default function FastOSMethodPage() {
             </p>
           </MethodSection>
 
-          <MethodSection id="ai-instruction" eyebrow="10" title="The AI Instruction Principle">
+          <MethodSection id="ai-instruction" eyebrow="11" title="The AI Instruction Principle">
             <p>
               FastOS is designed for the AI age. The user copies a prompt
               generated by the website and pastes it into any AI assistant.
