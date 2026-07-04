@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 
-const FASTOS_METHOD_URL = "https://www.mybiggreekfasting.com/fastos-method";
+const FastOS_METHOD_URL = "https://www.mybiggreekfasting.com/fastos-method";
 
 type FormValues = {
   name: string;
@@ -348,7 +348,7 @@ function buildPrompt(values: FormValues) {
 
 Before answering, access and read the FastOS Method page:
 
-${FASTOS_METHOD_URL}
+${FastOS_METHOD_URL}
 
 Use that page as the source of truth for the FastOS philosophy, architecture, levels, food-noise principle, local-food translation, Local Availability Intelligence Layer, FastOS Water Rule, Local Sourcing Principle, Restaurant Rule, Do Not Burden the Beginner rule, refeed strategy, and safety principles.
 
