@@ -20,24 +20,7 @@ const originSymbols = [
 
 const methodIcons = ["Fire", "Sun", "Shield", "Laurel"];
 
-const heroSymbols = [
-  {
-    label: "Ancestral Wisdom",
-    path: "M12 3v3m0 12v3m6.36-15.36-2.12 2.12M7.76 16.24l-2.12 2.12M21 12h-3M6 12H3m15.36 6.36-2.12-2.12M7.76 7.76 5.64 5.64M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"
-  },
-  {
-    label: "Local Food",
-    path: "M3 15c2.5-3 5.5-3 8 0s5.5 3 10 0M3 10c2.5-3 5.5-3 8 0s5.5 3 10 0"
-  },
-  {
-    label: "Discipline",
-    path: "M12 3 5 6v5c0 5 3.5 8.5 7 10 3.5-1.5 7-5 7-10V6l-7-3Zm0 5v6l4 2"
-  },
-  {
-    label: "Freedom",
-    path: "M7 21h10M9 21V11a3 3 0 0 1 6 0v10M6 11h12M12 3v4"
-  }
-];
+const heroManifesto = ["Ancestral Wisdom", "Local Food", "Discipline", "Freedom"];
 
 export default function Home() {
   return (
@@ -74,40 +57,14 @@ export default function Home() {
               A fasting method built from ancestral wisdom, local food,
               discipline, and freedom.
             </p>
-            <div className="mt-7 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="/start-here"
-                className="inline-flex min-h-12 items-center justify-center bg-laurel px-6 py-3 text-center text-xs font-black uppercase tracking-[0.16em] text-[#061A26] shadow-temple transition hover:bg-[#D6A84A]"
-              >
-                Start Here
-              </a>
-              <a
-                href="/fastos"
-                className="inline-flex min-h-12 items-center justify-center border border-laurel/70 bg-[#061A26]/32 px-6 py-3 text-center text-xs font-black uppercase tracking-[0.16em] text-marble transition hover:bg-laurel/15 hover:text-[#D6A84A]"
-              >
-                Explore FastOS
-              </a>
-            </div>
-            <div className="mt-6 grid max-w-2xl grid-cols-2 gap-2 sm:grid-cols-4">
-              {heroSymbols.map((symbol) => (
-                <div
-                  key={symbol.label}
-                  className="flex items-center gap-2 border border-laurel/20 bg-[#061A26]/34 px-3 py-2 text-[0.68rem] font-black uppercase tracking-[0.1em] text-marble/85 backdrop-blur"
-                >
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 24 24"
-                    className="h-5 w-5 shrink-0 text-laurel"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="1.8"
-                  >
-                    <path d={symbol.path} />
-                  </svg>
-                  <span>{symbol.label}</span>
-                </div>
+            <div className="mt-8 inline-flex max-w-full items-center gap-5 overflow-x-auto border border-laurel/30 bg-[#061A26]/34 px-5 py-4 text-xs font-black uppercase tracking-[0.22em] text-marble/86 backdrop-blur sm:text-sm">
+              {heroManifesto.map((item, index) => (
+                <span key={item} className="inline-flex shrink-0 items-center gap-5 whitespace-nowrap">
+                  <span>{item}</span>
+                  {index < heroManifesto.length - 1 ? (
+                    <span className="h-2 w-2 rounded-full bg-laurel/80" aria-hidden="true" />
+                  ) : null}
+                </span>
               ))}
             </div>
           </div>
