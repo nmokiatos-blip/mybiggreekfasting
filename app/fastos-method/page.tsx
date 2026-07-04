@@ -371,23 +371,35 @@ export default function FastOSMethodPage() {
           <MethodSection
             id="local-availability"
             eyebrow="06"
-            title="The Local Availability Layer"
+            title="The Local Availability Intelligence Layer"
           >
             <p>
-              FastOS does not stop at saying &quot;eat meat,&quot; &quot;eat
-              fish,&quot; or &quot;drink mineral water.&quot;
+              FastOS does not ask the beginner to already know every local food
+              available to them. Most people do not know their own ancestral
+              food environment yet. That is part of the problem. FastOS should
+              help them discover it.
             </p>
-            <p className="font-black text-deepAegean">FastOS asks:</p>
+            <p>
+              The user gives the country, region, and food environment. The AI
+              then translates that region into a practical Local Availability
+              Map.
+            </p>
+            <p>
+              FastOS should not stop at generic categories like meat, fish,
+              seafood, fat, water, or vegetables.
+            </p>
+            <p className="font-black text-deepAegean">FastOS should ask:</p>
             <ul className="grid gap-3">
               {[
-                "Which fish are actually available where you live?",
-                "Which seafood belongs to your region?",
-                "Which meats are realistic, affordable, and culturally normal?",
+                "What fish may actually exist in this region?",
+                "What seafood belongs to this coast, island, river, or market culture?",
+                "What meats are realistic, traditional, affordable, or easy to find?",
                 "Which animal fats are available?",
-                "Which eggs, dairy, or fermented animal foods are traditional or tolerated?",
-                "Which mineral waters are available, preferably in glass bottles?",
-                "Which sparkling waters are naturally carbonated, not artificially sweetened or flavored?",
-                "Which foods are local ancestral foods, and which are imported diet ideology?"
+                "What eggs, dairy, or fermented animal foods may exist locally?",
+                "What mineral waters are available?",
+                "Is naturally carbonated sparkling mineral water available?",
+                "Can the user find glass bottles?",
+                "Where should the user look: fish market, butcher, farmers market, small shop, family-owned grocery, local farm, traditional restaurant?"
               ].map((question) => (
                 <li key={question} className="border border-limestone bg-marble p-4 font-bold text-obsidian/82">
                   {question}
@@ -395,59 +407,44 @@ export default function FastOSMethodPage() {
               ))}
             </ul>
             <p>
-              The goal is not to copy Nick&apos;s Greek plate. In Greece, the
-              plate may include sardines, mackerel, octopus, lamb, feta, yogurt,
-              olive oil, horta, mineral water, and Greek coffee. In the San
-              Francisco Bay Area, the plate may include Dungeness crab, wild
-              salmon, sardines, oysters, grass-fed beef, bison, pasture eggs,
-              butter, and mineral water in glass bottles.
-            </p>
-            <p>
-              In France, the plate may include oysters, duck, beef, lamb,
-              sardines, eggs, butter, cheese if tolerated, mineral water, and
-              naturally sparkling water in glass bottles. In the Caribbean or
-              coastal Latin America, the plate may include local fish, seafood,
-              beef, chicken, eggs, animal fat, simple vegetables, mineral water,
-              and traditional market foods.
-            </p>
-            <p className="font-black text-deepAegean">
-              FastOS must always translate the method into the user&apos;s local
-              reality.
+              The user should not need to answer all of this before getting
+              help. The OS should guide the AI to generate this map.
             </p>
             <div className="grid gap-4 md:grid-cols-3">
               {[
-                ["Generic category", "Fish"],
-                ["FastOS translation", "What fish is actually available to this person, in this region, at this price, in this culture?"],
-                ["Generic category", "Meat"],
-                ["FastOS translation", "Which meats are realistic here: beef, lamb, goat, pork, bison, duck, chicken, rabbit, game, organ meats, or local traditional meats?"],
-                ["Generic category", "Water"],
-                ["FastOS translation", "Which mineral waters are available? Is sparkling water naturally carbonated? Is it sold in glass bottles? Does it contain sugar, sweeteners, flavoring, or additives?"]
-              ].map(([label, text]) => (
-                <article key={`${label}-${text}`} className="border border-limestone bg-white p-5">
+                [
+                  "Generic",
+                  "Eat fish.",
+                  "FastOS",
+                  "In your region, investigate local fish markets, coastal fish, sardines, mackerel, crab, shrimp, oysters, or other regional seafood depending on availability."
+                ],
+                [
+                  "Generic",
+                  "Eat meat.",
+                  "FastOS",
+                  "Look for local beef, lamb, goat, pork, poultry, duck, rabbit, venison, bison, organ meats, or traditional meats depending on region."
+                ],
+                [
+                  "Generic",
+                  "Drink water.",
+                  "FastOS",
+                  "Prefer mineral water in glass bottles. Prefer naturally carbonated sparkling mineral water when sparkling water is desired. Avoid diet soda, flavored waters, sweetened waters, sugar-free junk drinks, and plastic bottles as the ideal default."
+                ]
+              ].map(([genericLabel, genericText, fastOSLabel, fastOSText]) => (
+                <article key={genericText} className="border border-limestone bg-white p-5">
                   <p className="text-xs font-black uppercase tracking-[0.18em] text-aegean">
-                    {label}
+                    {genericLabel}
                   </p>
                   <p className="mt-2 text-base font-bold leading-7 text-obsidian/78">
-                    {text}
+                    {genericText}
+                  </p>
+                  <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-laurel">
+                    {fastOSLabel}
+                  </p>
+                  <p className="mt-2 text-base font-bold leading-7 text-obsidian/78">
+                    {fastOSText}
                   </p>
                 </article>
-              ))}
-            </div>
-            <p>FastOS food translation must be:</p>
-            <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-4">
-              {[
-                "local",
-                "ancestral",
-                "practical",
-                "affordable when possible",
-                "culturally realistic",
-                "low-noise",
-                "fasting-supportive",
-                "not dependent on imported diet trends"
-              ].map((rule) => (
-                <div key={rule} className="border border-aegean/14 bg-marble p-4 text-sm font-black text-deepAegean">
-                  {rule}
-                </div>
               ))}
             </div>
             <div className="border border-aegean/20 bg-deepAegean p-5 text-white">
@@ -455,15 +452,192 @@ export default function FastOSMethodPage() {
                 Local Availability Rule
               </h3>
               <p className="mt-3 text-base leading-7">
-                Do not tell the user to eat generic &quot;fish&quot; or generic
-                &quot;meat&quot; if their region allows more precision.
+                Do not burden the beginner with a giant local-food
+                questionnaire. Ask simple questions. Use the region. Generate
+                intelligent local guidance. Help the user investigate.
               </p>
               <p className="mt-3 text-base leading-7">
-                Name the specific local options whenever possible. The AI should
-                help the user discover their ancestral plate, not copy someone
-                else&apos;s menu.
+                FastOS should say: &quot;Based on your region, here are the
+                foods, waters, shops, markets, and restaurants to
+                investigate.&quot;
+              </p>
+              <p className="mt-3 text-base leading-7">
+                Not: &quot;Tell me everything available before I can help
+                you.&quot;
               </p>
             </div>
+
+            <div className="border border-limestone bg-marble p-5">
+              <h3 className="font-display text-2xl font-black text-deepAegean">
+                The FastOS Water Rule
+              </h3>
+              <p className="mt-3 text-base leading-7 text-obsidian/74">
+                FastOS prefers water that supports fasting, minerals, and
+                ancestral simplicity.
+              </p>
+              <p className="mt-4 font-black text-deepAegean">
+                Ideal FastOS water hierarchy:
+              </p>
+              <ol className="mt-3 grid gap-2 text-base leading-7 text-obsidian/76">
+                {[
+                  "Mineral water in glass bottles",
+                  "Naturally carbonated sparkling mineral water in glass bottles",
+                  "Still mineral water in glass bottles",
+                  "Local spring water if clean and safe",
+                  "Plain unsweetened water as fallback"
+                ].map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ol>
+              <p className="mt-4 font-black text-deepAegean">FastOS avoids:</p>
+              <ul className="mt-3 grid gap-2 text-base leading-7 text-obsidian/76 sm:grid-cols-2">
+                {[
+                  "diet soda",
+                  "flavored waters",
+                  "sweetened waters",
+                  "artificial sweeteners",
+                  "sugar-free junk drinks",
+                  "electrolyte drinks with sweeteners",
+                  "plastic bottles as the ideal default"
+                ].map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <p className="mt-4 text-base leading-7 text-obsidian/74">
+                Plastic bottles may be a real-life fallback, but they are not
+                the ideal FastOS default. Sparkling water must not mean soda,
+                flavored zero-calorie drink, or sweetened drink. Sparkling water
+                means naturally carbonated mineral water when possible.
+              </p>
+            </div>
+
+            <div className="border border-limestone bg-white p-5">
+              <h3 className="font-display text-2xl font-black text-deepAegean">
+                The Local Sourcing Principle
+              </h3>
+              <p className="mt-3 text-base leading-7 text-obsidian/74">
+                FastOS should guide the user toward real local food sources.
+              </p>
+              <div className="mt-5 grid gap-4 md:grid-cols-2">
+                <div>
+                  <p className="font-black text-deepAegean">
+                    Investigate:
+                  </p>
+                  <ul className="mt-3 grid gap-2 text-base leading-7 text-obsidian/76">
+                    {[
+                      "local fish markets",
+                      "coastal seafood markets",
+                      "farmers markets",
+                      "butcher shops",
+                      "family-owned grocery stores",
+                      "small local shops",
+                      "traditional markets",
+                      "local farms",
+                      "direct farm suppliers",
+                      "local egg producers",
+                      "local dairy producers where appropriate and legal",
+                      "regional mineral water brands",
+                      "glass-bottle mineral water suppliers",
+                      "traditional restaurants",
+                      "family-owned restaurants"
+                    ].map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-black text-deepAegean">Discourage:</p>
+                  <ul className="mt-3 grid gap-2 text-base leading-7 text-obsidian/76">
+                    {[
+                      "fast-food chains",
+                      "chain restaurants",
+                      "ultra-processed supermarket diet products",
+                      "fake keto products",
+                      "diet sodas",
+                      "flavored waters with sweeteners",
+                      "industrial snacks",
+                      "seed-oil fried foods",
+                      "imported diet ideology"
+                    ].map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="border border-aegean/18 bg-marble p-5">
+              <h3 className="font-display text-2xl font-black text-deepAegean">
+                Restaurant Rule
+              </h3>
+              <p className="mt-3 text-base leading-7 text-obsidian/74">
+                Prefer local, family-owned, traditional restaurants. Avoid
+                fast-food chains and chain restaurants when possible.
+              </p>
+              <p className="mt-3 text-base leading-7 text-obsidian/74">
+                Choose simple grilled, roasted, boiled, or traditionally
+                prepared animal foods. Choose mineral water in glass bottles
+                when possible. Avoid sauces, fried foods, sweet drinks,
+                desserts, and industrial side dishes that increase food noise.
+              </p>
+            </div>
+
+            <div className="border border-aegean/20 bg-deepAegean p-5 text-white">
+              <h3 className="font-display text-2xl font-black">
+                Do Not Burden the Beginner Rule
+              </h3>
+              <p className="mt-3 text-base leading-7">
+                The beginner gives their country or region. The AI does the
+                first translation. The response should help the user investigate
+                local foods, waters, shops, markets, and restaurants without
+                turning the prompt generator into homework.
+              </p>
+            </div>
+
+            <div className="border border-limestone bg-white p-5">
+              <h3 className="font-display text-2xl font-black text-deepAegean">
+                Local Availability Map
+              </h3>
+              <p className="mt-3 text-base leading-7 text-obsidian/74">
+                When the AI applies FastOS to a user, it should generate a
+                Local Availability Map based on the user&apos;s country or
+                region. The user does not need to know all local foods in
+                advance.
+              </p>
+              <div className="mt-5 grid gap-4 md:grid-cols-2">
+                {[
+                  [
+                    "Proteins to Investigate Locally",
+                    "List likely local fish, seafood, meats, poultry, eggs, organ meats, or traditional animal foods based on the user's region. If exact foods are not confirmed, label them as: To investigate locally."
+                  ],
+                  [
+                    "Fats to Investigate Locally",
+                    "Suggest traditional and realistic fats such as animal fat from meat, beef tallow, lamb fat, pork fat or lard where culturally appropriate, duck fat, butter, ghee, olive oil, or coconut oil where culturally and locally appropriate. Avoid seed oils and industrial frying oils."
+                  ],
+                  [
+                    "Mineral Water Strategy",
+                    "Recommend mineral water, glass bottles when realistically available, naturally carbonated sparkling mineral water when sparkling water is desired, and plain unsweetened water only. Avoid diet soda, flavored waters, sweetened waters, artificial sweeteners, sugar-free junk drinks, and plastic bottles as the ideal default."
+                  ],
+                  [
+                    "Where to Look",
+                    "Suggest searches such as fish market near me, farmers market near me, local butcher near me, family-owned grocery store near me, traditional market near me, pasture eggs near me, local seafood market near me, glass bottle mineral water near me, naturally carbonated mineral water near me, traditional restaurant near me, and family-owned restaurant near me."
+                  ]
+                ].map(([title, text]) => (
+                  <article key={title} className="border border-limestone bg-marble p-5">
+                    <h4 className="font-display text-xl font-black text-deepAegean">
+                      {title}
+                    </h4>
+                    <p className="mt-2 text-base leading-7 text-obsidian/74">
+                      {text}
+                    </p>
+                  </article>
+                ))}
+              </div>
+              <p className="mt-5 font-black text-deepAegean">
+                If the AI has live web access, it may provide examples or links.
+              </p>
+            </div>
+
             <div className="grid gap-4 md:grid-cols-2">
               {availabilityExamples.map((example) => (
                 <article key={example.place} className="border border-limestone bg-marble p-5">
@@ -471,7 +645,7 @@ export default function FastOSMethodPage() {
                     {example.place}
                   </h3>
                   <p className="mt-3 text-sm font-black uppercase tracking-[0.16em] text-laurel">
-                    Possible FastOS foods
+                    To investigate locally
                   </p>
                   <ul className="mt-3 grid gap-2 text-base leading-7 text-obsidian/76">
                     {example.foods.map((food) => (
