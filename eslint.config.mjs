@@ -13,6 +13,7 @@ const eslintConfig = [
   {
     ignores: [
       ".next/**",
+      "FastOS/**",
       "node_modules/**",
       "public/**",
       "Medias/**",

@@ -9,7 +9,7 @@ const features = [
   },
   {
     title: "Generate the Prompt",
-    body: "FastOS builds a structured prompt with the right context and philosophy."
+    body: "FastOS builds a structured command file that points your AI to the method first."
   },
   {
     title: "Copy It",
@@ -61,6 +61,9 @@ export function FastOSAnnouncement() {
                   FastOS helps you build a personalized fasting prompt based on your real life: your country, your food environment, your cravings, your schedule, your fasting level, your goals, and your constraints.
                 </p>
                 <p>
+                  The FastOS Method is the source code. The prompt generator is the command file. Your AI is the execution engine.
+                </p>
+                <p>
                   Fill the form. Generate your prompt. Copy it. Paste it into ChatGPT, Claude, Gemini, Grok, or any AI you want.
                 </p>
                 <p className="font-black text-deepAegean">
@@ -85,10 +88,10 @@ export function FastOSAnnouncement() {
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
                 <ButtonLink href="/fastos">Try FastOS</ButtonLink>
                 <Link
-                  href="/fastos"
+                  href="/fastos-method"
                   className="inline-flex font-black uppercase tracking-[0.14em] text-deepAegean transition hover:text-aegean"
                 >
-                  How it works
+                  Read the Method
                 </Link>
               </div>
               <p className="mt-5 text-sm font-bold leading-6 text-obsidian/60">
