@@ -11,7 +11,6 @@ type FormValues = {
   schedule: string;
   currentFood: string;
   problemFoods: string;
-  ancestralFoods: string;
   foodEnvironment: string;
   fastingLevel: string;
   fastingEffects: string[];
@@ -29,7 +28,6 @@ type OptionFieldKey =
   | "schedule"
   | "currentFood"
   | "problemFoods"
-  | "ancestralFoods"
   | "fastingGift"
   | "controlledBy"
   | "safetyNote"
@@ -57,7 +55,6 @@ const initialValues: FormValues = {
   schedule: "",
   currentFood: "",
   problemFoods: "",
-  ancestralFoods: "",
   foodEnvironment: "",
   fastingLevel: "",
   fastingEffects: [],
@@ -75,7 +72,6 @@ const initialOptionFields: OptionFieldsState = {
   schedule: { selected: [], other: "" },
   currentFood: { selected: [], other: "" },
   problemFoods: { selected: [], other: "" },
-  ancestralFoods: { selected: [], other: "" },
   fastingGift: { selected: [], other: "" },
   controlledBy: { selected: [], other: "" },
   safetyNote: { selected: [], other: "" },
@@ -166,35 +162,6 @@ const problemFoodOptions = [
   "Eating from stress",
   "Social pressure",
   "Fear of hunger"
-];
-
-const ancestralFoodOptions = [
-  "Beef",
-  "Lamb",
-  "Pork",
-  "Duck",
-  "Chicken",
-  "Eggs",
-  "Sardines",
-  "Mackerel",
-  "Fish",
-  "Seafood",
-  "Octopus",
-  "Liver / organs",
-  "Bone broth",
-  "Local cheese",
-  "Greek yogurt",
-  "Butter",
-  "Olive oil",
-  "Animal fat",
-  "Horta / wild greens",
-  "Simple vegetables",
-  "Mineral water",
-  "Black coffee",
-  "Greek coffee",
-  "Fermented foods",
-  "Local traditional meats",
-  "Farmers market foods"
 ];
 
 const fastingGiftOptions = [
@@ -406,7 +373,6 @@ About me:
 Current food reality:
 - What I currently eat most often: ${safeValue(values.currentFood)}
 - Foods that create the most cravings or problems for me: ${safeValue(values.problemFoods)}
-- Real ancestral foods available where I live: ${safeValue(values.ancestralFoods)}
 - Food environment: ${safeValue(values.foodEnvironment)}
 
 Fasting experience:
@@ -1003,22 +969,6 @@ export function FastOSBuilder() {
                 }
                 onOtherChange={(other) =>
                   updateOptionField("problemFoods", { other })
-                }
-              />
-              <OptionSelectWithOther
-                groupId="ancestral-foods"
-                label="What real ancestral foods are available where you live?"
-                helperText="Choose broad foods you already know. You do not need to research every local option."
-                options={ancestralFoodOptions}
-                selected={optionFields.ancestralFoods.selected}
-                other={optionFields.ancestralFoods.other}
-                otherLabel="Other local ancestral foods"
-                otherPlaceholder="Example: local cheese, duck, oysters, goat meat, village eggs, wild greens."
-                onSelectedChange={(selected) =>
-                  updateOptionField("ancestralFoods", { selected })
-                }
-                onOtherChange={(other) =>
-                  updateOptionField("ancestralFoods", { other })
                 }
               />
               <SelectField
