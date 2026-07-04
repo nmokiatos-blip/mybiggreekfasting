@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ButtonLink } from "@/components/ButtonLink";
 import { FastOSAnnouncement } from "@/components/FastOSAnnouncement";
+import { GreekKeyBorder } from "@/components/GreekKeyBorder";
 import { Section } from "@/components/Section";
 import { freedoms, methodPillars, site } from "@/lib/site";
 
@@ -50,6 +51,8 @@ export default function Home() {
       </section>
 
       <FastOSAnnouncement />
+
+      <GreekKeyBorder className="my-8 text-blue-400 opacity-70" />
 
       <Section eyebrow="Not keto tzatziki" title="Greek does not mean recipes. Greek means origin." surface="white">
         <p>

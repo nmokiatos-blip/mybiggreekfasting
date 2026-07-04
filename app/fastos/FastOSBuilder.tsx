@@ -48,6 +48,17 @@ type FieldProps = {
   onChange: (id: keyof FormValues, value: string) => void;
 };
 
+type HudField = {
+  label: string;
+  value: string | string[];
+};
+
+type HudSection = {
+  letter: string;
+  title: string;
+  fields: HudField[];
+};
+
 const initialValues: FormValues = {
   name: "",
   ageRange: "",
@@ -326,6 +337,18 @@ function safeValue(value: string, fallback = "Not answered") {
 
 function listValue(values: string[]) {
   return values.length > 0 ? values.join(", ") : "Not answered";
+}
+
+function isAnswered(value: string | string[]) {
+  return Array.isArray(value) ? value.length > 0 : value.trim().length > 0;
+}
+
+function hudValue(value: string | string[]) {
+  if (!isAnswered(value)) {
+    return "Missing";
+  }
+
+  return Array.isArray(value) ? value.join(", ") : value.trim();
 }
 
 function combineOptionsAndOther(selectedOptions: string[], otherText: string) {
@@ -627,6 +650,90 @@ function CheckboxGroup({
   );
 }
 
+function SectionHud({ sections }: { sections: HudSection[] }) {
+  const totalFields = sections.reduce((total, section) => total + section.fields.length, 0);
+  const completedFields = sections.reduce(
+    (total, section) =>
+      total + section.fields.filter((field) => isAnswered(field.value)).length,
+    0
+  );
+
+  return (
+    <aside className="lg:sticky lg:top-24">
+      <div className="border border-aegean/16 bg-white p-4 shadow-[0_18px_50px_rgba(8,119,216,0.08)] sm:p-5">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-laurel">
+              Live HUD
+            </p>
+            <h3 className="mt-2 font-display text-2xl font-black text-deepAegean">
+              What FastOS knows
+            </h3>
+          </div>
+          <p className="shrink-0 border border-aegean/18 bg-aegean/8 px-3 py-2 text-xs font-black text-deepAegean">
+            {completedFields}/{totalFields}
+          </p>
+        </div>
+
+        <div className="mt-4 h-2 bg-marble" aria-hidden="true">
+          <div
+            className="h-full bg-aegean transition-all"
+            style={{ width: `${Math.round((completedFields / totalFields) * 100)}%` }}
+          />
+        </div>
+
+        <div className="mt-5 grid gap-3">
+          {sections.map((section) => {
+            const answered = section.fields.filter((field) => isAnswered(field.value)).length;
+            const missing = section.fields.length - answered;
+
+            return (
+              <section key={section.letter} className="border border-limestone bg-marble p-3">
+                <div className="flex items-center justify-between gap-3">
+                  <h4 className="text-sm font-black text-deepAegean">
+                    {section.letter}. {section.title}
+                  </h4>
+                  <span
+                    className={
+                      missing === 0
+                        ? "shrink-0 text-xs font-black text-laurel"
+                        : "shrink-0 text-xs font-black text-obsidian/58"
+                    }
+                  >
+                    {missing === 0 ? "Complete" : `${missing} missing`}
+                  </span>
+                </div>
+                <dl className="mt-3 grid gap-2">
+                  {section.fields.map((field) => {
+                    const answeredField = isAnswered(field.value);
+
+                    return (
+                      <div key={field.label} className="grid gap-1">
+                        <dt className="text-[11px] font-black uppercase tracking-[0.14em] text-obsidian/48">
+                          {field.label}
+                        </dt>
+                        <dd
+                          className={
+                            answeredField
+                              ? "line-clamp-2 text-sm font-bold leading-5 text-obsidian"
+                              : "text-sm font-black leading-5 text-aegean"
+                          }
+                        >
+                          {hudValue(field.value)}
+                        </dd>
+                      </div>
+                    );
+                  })}
+                </dl>
+              </section>
+            );
+          })}
+        </div>
+      </div>
+    </aside>
+  );
+}
+
 function CopyButton({
   prompt,
   onCopied
@@ -735,11 +842,74 @@ export function FastOSBuilder() {
   const [copied, setCopied] = useState(false);
   const hasPrompt = prompt.length > 0;
 
-  const answeredCount = useMemo(() => {
-    return Object.values(values).filter((value) =>
-      Array.isArray(value) ? value.length > 0 : value.trim().length > 0
-    ).length;
-  }, [values]);
+  const hudSections = useMemo<HudSection[]>(
+    () => [
+      {
+        letter: "A",
+        title: "About You",
+        fields: [
+          { label: "Name", value: values.name },
+          { label: "Age", value: values.ageRange },
+          { label: "Region", value: values.country },
+          { label: "Schedule", value: values.schedule }
+        ]
+      },
+      {
+        letter: "B",
+        title: "Food Reality",
+        fields: [
+          { label: "Often eats", value: values.currentFood },
+          { label: "Problem foods", value: values.problemFoods },
+          { label: "Environment", value: values.foodEnvironment }
+        ]
+      },
+      {
+        letter: "C",
+        title: "Fasting",
+        fields: [
+          { label: "Level", value: values.fastingLevel },
+          { label: "Effects", value: values.fastingEffects },
+          { label: "Willpower", value: values.willpower }
+        ]
+      },
+      {
+        letter: "D",
+        title: "Goals",
+        fields: [
+          { label: "Main goal", value: values.mainGoal },
+          { label: "Fasting gift", value: values.fastingGift },
+          { label: "Controlled by", value: values.controlledBy }
+        ]
+      },
+      {
+        letter: "E",
+        title: "Constraints",
+        fields: [
+          { label: "Safety", value: values.safetyNote },
+          { label: "Lifestyle", value: values.lifestyleConstraints }
+        ]
+      },
+      {
+        letter: "F",
+        title: "Style",
+        fields: [
+          { label: "Guide style", value: values.guideStyle },
+          { label: "Approach", value: values.preferredApproach }
+        ]
+      }
+    ],
+    [values]
+  );
+
+  const answeredCount = useMemo(
+    () =>
+      hudSections.reduce(
+        (total, section) =>
+          total + section.fields.filter((field) => isAnswered(field.value)).length,
+        0
+      ),
+    [hudSections]
+  );
 
   function updateValue(id: keyof FormValues, value: string) {
     setValues((current) => ({ ...current, [id]: value }));
@@ -892,217 +1062,221 @@ export function FastOSBuilder() {
               </h2>
             </div>
             <p className="text-sm font-black text-deepAegean">
-              {answeredCount} sections answered
+              {answeredCount} answers filled
             </p>
           </div>
 
-          <form
-            className="grid gap-6"
-            onSubmit={(event) => {
-              event.preventDefault();
-              generatePrompt();
-            }}
-          >
-            <FormSection title="A. About You">
-              <div className="grid gap-5 md:grid-cols-2">
+          <div className="grid gap-6 lg:grid-cols-[18rem_minmax(0,1fr)] lg:items-start">
+            <SectionHud sections={hudSections} />
+
+            <form
+              className="grid gap-6"
+              onSubmit={(event) => {
+                event.preventDefault();
+                generatePrompt();
+              }}
+            >
+              <FormSection title="A. About You">
+                <div className="grid gap-5 md:grid-cols-2">
+                  <TextField
+                    id="name"
+                    label="Name or nickname"
+                    value={values.name}
+                    onChange={updateValue}
+                  />
+                  <SelectField
+                    id="ageRange"
+                    label="Age range"
+                    value={values.ageRange}
+                    options={ageRanges}
+                    onChange={updateValue}
+                  />
+                </div>
                 <TextField
-                  id="name"
-                  label="Name or nickname"
-                  value={values.name}
+                  id="country"
+                  label="Country / region"
+                  value={values.country}
+                  onChange={updateValue}
+                />
+                <OptionSelectWithOther
+                  groupId="schedule"
+                  label="Typical daily schedule"
+                  options={scheduleOptions}
+                  selected={optionFields.schedule.selected}
+                  other={optionFields.schedule.other}
+                  otherLabel="Other schedule details"
+                  otherPlaceholder="Example: I work from home, walk daily, eat late with family, travel twice a month."
+                  onSelectedChange={(selected) =>
+                    updateOptionField("schedule", { selected })
+                  }
+                  onOtherChange={(other) => updateOptionField("schedule", { other })}
+                />
+              </FormSection>
+
+              <FormSection title="B. Current Food Reality">
+                <OptionSelectWithOther
+                  groupId="current-food"
+                  label="What do you currently eat most often?"
+                  options={currentFoodOptions}
+                  selected={optionFields.currentFood.selected}
+                  other={optionFields.currentFood.other}
+                  otherLabel="Other foods you eat often"
+                  otherPlaceholder="Example: croissants, ice cream, kebab, tacos, charcuterie, pastries."
+                  onSelectedChange={(selected) =>
+                    updateOptionField("currentFood", { selected })
+                  }
+                  onOtherChange={(other) =>
+                    updateOptionField("currentFood", { other })
+                  }
+                />
+                <OptionSelectWithOther
+                  groupId="problem-foods"
+                  label="What foods create the most cravings or problems for you?"
+                  options={problemFoodOptions}
+                  selected={optionFields.problemFoods.selected}
+                  other={optionFields.problemFoods.other}
+                  otherLabel="Other craving/problem foods"
+                  otherPlaceholder="Example: I cannot stop once I start eating bread at restaurants."
+                  onSelectedChange={(selected) =>
+                    updateOptionField("problemFoods", { selected })
+                  }
+                  onOtherChange={(other) =>
+                    updateOptionField("problemFoods", { other })
+                  }
+                />
+                <SelectField
+                  id="foodEnvironment"
+                  label="Food environment"
+                  value={values.foodEnvironment}
+                  options={foodEnvironments}
+                  onChange={updateValue}
+                />
+              </FormSection>
+
+              <FormSection title="C. Fasting Experience">
+                <SelectField
+                  id="fastingLevel"
+                  label="Current fasting level"
+                  value={values.fastingLevel}
+                  options={fastingLevels}
+                  onChange={updateValue}
+                />
+                <CheckboxGroup
+                  legend="What happens when you try to fast?"
+                  options={fastingEffects}
+                  selected={values.fastingEffects}
+                  onChange={updateFastingEffects}
+                />
+                <SelectField
+                  id="willpower"
+                  label="Do you rely mostly on willpower?"
+                  value={values.willpower}
+                  options={willpowerOptions}
+                  onChange={updateValue}
+                />
+              </FormSection>
+
+              <FormSection title="D. Goals">
+                <SelectField
+                  id="mainGoal"
+                  label="Main goal"
+                  value={values.mainGoal}
+                  options={goals}
+                  onChange={updateValue}
+                />
+                <OptionSelectWithOther
+                  groupId="fasting-gift"
+                  label="What do you want fasting to give you?"
+                  options={fastingGiftOptions}
+                  selected={optionFields.fastingGift.selected}
+                  other={optionFields.fastingGift.other}
+                  otherLabel="Other fasting goals"
+                  otherPlaceholder="Example: I want to stop thinking about food all day."
+                  onSelectedChange={(selected) =>
+                    updateOptionField("fastingGift", { selected })
+                  }
+                  onOtherChange={(other) =>
+                    updateOptionField("fastingGift", { other })
+                  }
+                />
+                <OptionSelectWithOther
+                  groupId="controlled-by"
+                  label="What do you want to stop being controlled by?"
+                  options={controlledByOptions}
+                  selected={optionFields.controlledBy.selected}
+                  other={optionFields.controlledBy.other}
+                  otherLabel="Other things controlling you"
+                  otherPlaceholder="Example: I want to stop eating because everyone else is eating."
+                  onSelectedChange={(selected) =>
+                    updateOptionField("controlledBy", { selected })
+                  }
+                  onOtherChange={(other) =>
+                    updateOptionField("controlledBy", { other })
+                  }
+                />
+              </FormSection>
+
+              <FormSection title="E. Constraints">
+                <OptionSelectWithOther
+                  groupId="safety-note"
+                  label="Medical / safety note"
+                  helperText="Choose any caution notes that apply. This is not diagnosis or medical advice."
+                  options={safetyNoteOptions}
+                  selected={optionFields.safetyNote.selected}
+                  other={optionFields.safetyNote.other}
+                  otherLabel="Other medical or safety note"
+                  otherPlaceholder="Optional: medications, health conditions, pregnancy, eating disorder history, or anything an AI should tell you to discuss with a qualified professional."
+                  onSelectedChange={(selected) =>
+                    updateOptionField("safetyNote", { selected })
+                  }
+                  onOtherChange={(other) =>
+                    updateOptionField("safetyNote", { other })
+                  }
+                />
+                <OptionSelectWithOther
+                  groupId="lifestyle-constraints"
+                  label="Lifestyle constraints"
+                  options={lifestyleConstraintOptions}
+                  selected={optionFields.lifestyleConstraints.selected}
+                  other={optionFields.lifestyleConstraints.other}
+                  otherLabel="Other lifestyle constraints"
+                  otherPlaceholder="Example: I eat with my family every night at 9 PM and travel for work."
+                  onSelectedChange={(selected) =>
+                    updateOptionField("lifestyleConstraints", { selected })
+                  }
+                  onOtherChange={(other) =>
+                    updateOptionField("lifestyleConstraints", { other })
+                  }
+                />
+              </FormSection>
+
+              <FormSection title="F. Desired Style">
+                <SelectField
+                  id="guideStyle"
+                  label="How should the AI guide you?"
+                  value={values.guideStyle}
+                  options={guideStyles}
                   onChange={updateValue}
                 />
                 <SelectField
-                  id="ageRange"
-                  label="Age range"
-                  value={values.ageRange}
-                  options={ageRanges}
+                  id="preferredApproach"
+                  label="Preferred fasting approach"
+                  value={values.preferredApproach}
+                  options={preferredApproaches}
                   onChange={updateValue}
                 />
+              </FormSection>
+
+              <div className="flex justify-center pt-2">
+                <button
+                  type="submit"
+                  className="w-full bg-deepAegean px-6 py-4 text-sm font-black uppercase tracking-[0.16em] text-white shadow-temple transition hover:bg-aegean sm:w-auto"
+                >
+                  Generate My FastOS Prompt
+                </button>
               </div>
-              <TextField
-                id="country"
-                label="Country / region"
-                value={values.country}
-                onChange={updateValue}
-              />
-              <OptionSelectWithOther
-                groupId="schedule"
-                label="Typical daily schedule"
-                options={scheduleOptions}
-                selected={optionFields.schedule.selected}
-                other={optionFields.schedule.other}
-                otherLabel="Other schedule details"
-                otherPlaceholder="Example: I work from home, walk daily, eat late with family, travel twice a month."
-                onSelectedChange={(selected) =>
-                  updateOptionField("schedule", { selected })
-                }
-                onOtherChange={(other) => updateOptionField("schedule", { other })}
-              />
-            </FormSection>
-
-            <FormSection title="B. Current Food Reality">
-              <OptionSelectWithOther
-                groupId="current-food"
-                label="What do you currently eat most often?"
-                options={currentFoodOptions}
-                selected={optionFields.currentFood.selected}
-                other={optionFields.currentFood.other}
-                otherLabel="Other foods you eat often"
-                otherPlaceholder="Example: croissants, ice cream, kebab, tacos, charcuterie, pastries."
-                onSelectedChange={(selected) =>
-                  updateOptionField("currentFood", { selected })
-                }
-                onOtherChange={(other) =>
-                  updateOptionField("currentFood", { other })
-                }
-              />
-              <OptionSelectWithOther
-                groupId="problem-foods"
-                label="What foods create the most cravings or problems for you?"
-                options={problemFoodOptions}
-                selected={optionFields.problemFoods.selected}
-                other={optionFields.problemFoods.other}
-                otherLabel="Other craving/problem foods"
-                otherPlaceholder="Example: I cannot stop once I start eating bread at restaurants."
-                onSelectedChange={(selected) =>
-                  updateOptionField("problemFoods", { selected })
-                }
-                onOtherChange={(other) =>
-                  updateOptionField("problemFoods", { other })
-                }
-              />
-              <SelectField
-                id="foodEnvironment"
-                label="Food environment"
-                value={values.foodEnvironment}
-                options={foodEnvironments}
-                onChange={updateValue}
-              />
-            </FormSection>
-
-            <FormSection title="C. Fasting Experience">
-              <SelectField
-                id="fastingLevel"
-                label="Current fasting level"
-                value={values.fastingLevel}
-                options={fastingLevels}
-                onChange={updateValue}
-              />
-              <CheckboxGroup
-                legend="What happens when you try to fast?"
-                options={fastingEffects}
-                selected={values.fastingEffects}
-                onChange={updateFastingEffects}
-              />
-              <SelectField
-                id="willpower"
-                label="Do you rely mostly on willpower?"
-                value={values.willpower}
-                options={willpowerOptions}
-                onChange={updateValue}
-              />
-            </FormSection>
-
-            <FormSection title="D. Goals">
-              <SelectField
-                id="mainGoal"
-                label="Main goal"
-                value={values.mainGoal}
-                options={goals}
-                onChange={updateValue}
-              />
-              <OptionSelectWithOther
-                groupId="fasting-gift"
-                label="What do you want fasting to give you?"
-                options={fastingGiftOptions}
-                selected={optionFields.fastingGift.selected}
-                other={optionFields.fastingGift.other}
-                otherLabel="Other fasting goals"
-                otherPlaceholder="Example: I want to stop thinking about food all day."
-                onSelectedChange={(selected) =>
-                  updateOptionField("fastingGift", { selected })
-                }
-                onOtherChange={(other) =>
-                  updateOptionField("fastingGift", { other })
-                }
-              />
-              <OptionSelectWithOther
-                groupId="controlled-by"
-                label="What do you want to stop being controlled by?"
-                options={controlledByOptions}
-                selected={optionFields.controlledBy.selected}
-                other={optionFields.controlledBy.other}
-                otherLabel="Other things controlling you"
-                otherPlaceholder="Example: I want to stop eating because everyone else is eating."
-                onSelectedChange={(selected) =>
-                  updateOptionField("controlledBy", { selected })
-                }
-                onOtherChange={(other) =>
-                  updateOptionField("controlledBy", { other })
-                }
-              />
-            </FormSection>
-
-            <FormSection title="E. Constraints">
-              <OptionSelectWithOther
-                groupId="safety-note"
-                label="Medical / safety note"
-                helperText="Choose any caution notes that apply. This is not diagnosis or medical advice."
-                options={safetyNoteOptions}
-                selected={optionFields.safetyNote.selected}
-                other={optionFields.safetyNote.other}
-                otherLabel="Other medical or safety note"
-                otherPlaceholder="Optional: medications, health conditions, pregnancy, eating disorder history, or anything an AI should tell you to discuss with a qualified professional."
-                onSelectedChange={(selected) =>
-                  updateOptionField("safetyNote", { selected })
-                }
-                onOtherChange={(other) =>
-                  updateOptionField("safetyNote", { other })
-                }
-              />
-              <OptionSelectWithOther
-                groupId="lifestyle-constraints"
-                label="Lifestyle constraints"
-                options={lifestyleConstraintOptions}
-                selected={optionFields.lifestyleConstraints.selected}
-                other={optionFields.lifestyleConstraints.other}
-                otherLabel="Other lifestyle constraints"
-                otherPlaceholder="Example: I eat with my family every night at 9 PM and travel for work."
-                onSelectedChange={(selected) =>
-                  updateOptionField("lifestyleConstraints", { selected })
-                }
-                onOtherChange={(other) =>
-                  updateOptionField("lifestyleConstraints", { other })
-                }
-              />
-            </FormSection>
-
-            <FormSection title="F. Desired Style">
-              <SelectField
-                id="guideStyle"
-                label="How should the AI guide you?"
-                value={values.guideStyle}
-                options={guideStyles}
-                onChange={updateValue}
-              />
-              <SelectField
-                id="preferredApproach"
-                label="Preferred fasting approach"
-                value={values.preferredApproach}
-                options={preferredApproaches}
-                onChange={updateValue}
-              />
-            </FormSection>
-
-            <div className="flex justify-center pt-2">
-              <button
-                type="submit"
-                className="w-full bg-deepAegean px-6 py-4 text-sm font-black uppercase tracking-[0.16em] text-white shadow-temple transition hover:bg-aegean sm:w-auto"
-              >
-                Generate My FastOS Prompt
-              </button>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </section>
 

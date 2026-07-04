@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink } from "@/components/ButtonLink";
+import { GreekKeyBorder } from "@/components/GreekKeyBorder";
 
 const features = [
   {
@@ -26,7 +27,7 @@ export function FastOSAnnouncement() {
     <section className="marble-surface border-y border-aegean/12 px-5 py-20 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-7xl">
         <div className="relative overflow-hidden border border-aegean/16 bg-white/86 p-5 shadow-temple sm:p-8 lg:p-10">
-          <div className="absolute inset-x-0 top-0 h-2 text-aegean greek-key opacity-70" />
+          <GreekKeyBorder className="absolute inset-x-0 top-3 h-5 text-blue-400 opacity-60" />
           <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
             <div className="relative mx-auto aspect-square w-full max-w-[460px] overflow-hidden border border-limestone bg-marble shadow-[0_18px_55px_rgba(8,119,216,0.12)]">
               <Image
