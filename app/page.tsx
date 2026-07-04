@@ -36,9 +36,6 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,26,38,0.96)_0%,rgba(6,26,38,0.82)_38%,rgba(6,26,38,0.34)_67%,rgba(6,26,38,0.06)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(214,168,74,0.08),transparent_24rem),linear-gradient(0deg,rgba(6,26,38,0.36),transparent_34%,rgba(6,26,38,0.1))]" />
-        <div className="absolute inset-x-0 top-[88px] h-4 text-laurel/45 greek-meander sm:top-[72px]" aria-hidden="true" />
-        <div className="absolute inset-x-0 bottom-0 h-5 text-laurel/55 greek-meander" aria-hidden="true" />
-
         <div className="relative z-10 mx-auto flex min-h-[760px] max-w-7xl items-center px-5 pb-20 pt-40 sm:min-h-[680px] sm:px-8 sm:pt-36 lg:min-h-[85vh] lg:px-12">
           <div className="max-w-[50rem]">
             <p className="mb-5 text-xs font-black uppercase tracking-[0.28em] text-laurel sm:text-sm">
