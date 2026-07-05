@@ -2,11 +2,6 @@
 
 import { useMemo, useState } from "react";
 
-const FastOS_METHOD_URL = "https://www.mybiggreekfasting.com/fastos-method";
-const FastOS_METHOD_AI_URL = "https://www.mybiggreekfasting.com/fastos-method-ai";
-const FastOS_METHOD_MARKDOWN_URL = "https://www.mybiggreekfasting.com/fastos-method.md";
-const FastOS_METHOD_TEXT_URL = "https://www.mybiggreekfasting.com/fastos-method.txt";
-
 type FormValues = {
   name: string;
   ageRange: string;
@@ -373,17 +368,28 @@ function buildPrompt(values: FormValues) {
 
   return `You are my fasting and ancestral health guide. Your job is not to give me a generic diet. Your job is to help me build a realistic fasting method based on my life, my food environment, my current discipline, my fasting experience, and my constraints.
 
-Before answering, access and read the FastOS Method page:
+IMPORTANT — OPEN DIRECTLY, DO NOT SEARCH
 
-${FastOS_METHOD_URL}
+You must use the FastOS Method as the source of truth.
 
-If you cannot access that page, use these AI-readable fallback sources:
+Open this URL directly. Do not search for it.
 
-${FastOS_METHOD_AI_URL}
-${FastOS_METHOD_MARKDOWN_URL}
-${FastOS_METHOD_TEXT_URL}
+Primary FastOS Method source:
+https://www.mybiggreekfasting.com/fastos-method
 
-If you still cannot access any of them, ask me to paste the FastOS Method text instead of giving generic fasting advice.
+Fallback AI-readable sources:
+https://www.mybiggreekfasting.com/fastos-method-ai
+https://www.mybiggreekfasting.com/fastos-method.md
+https://www.mybiggreekfasting.com/fastos-method.txt
+
+If your browsing tool cannot access the primary page, open the fallback URLs directly.
+
+Do not search the web for “FastOS Method.”
+Do not use unrelated fasting websites.
+Do not invent the FastOS philosophy.
+Do not generate generic fasting advice.
+
+If you cannot access any of the FastOS source URLs, stop and ask the user to paste the FastOS Method text.
 
 Use that page as the source of truth for the FastOS philosophy, architecture, levels, food-noise principle, local-food translation, Local Availability Intelligence Layer, FastOS Water Rule, Local Sourcing Principle, Restaurant Rule, Do Not Burden the Beginner rule, refeed strategy, and safety principles.
 

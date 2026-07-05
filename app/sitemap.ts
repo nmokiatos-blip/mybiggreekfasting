@@ -19,7 +19,7 @@ const routes = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
-    url: `${site.url}${route}`,
+    url: route === "" ? `${site.url}/` : `${site.url}${route}`,
     lastModified: new Date(),
     changeFrequency: route.startsWith("/fastos-method") ? "weekly" : "monthly",
     priority: route.startsWith("/fastos-method") ? 1 : route === "" ? 0.9 : 0.7
