@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ButtonLink } from "@/components/ButtonLink";
+import { fastOSMethodUrls } from "@/lib/fastos-method-ai";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -278,6 +279,26 @@ export default function FastOSMethodPage() {
               Read the Architecture
             </ButtonLink>
           </div>
+          <nav
+            aria-label="AI-readable FastOS Method formats"
+            className="mt-8 border border-aegean/16 bg-white/75 p-4 text-sm font-bold text-obsidian/72"
+          >
+            <span className="text-deepAegean">For AI tools: </span>
+            <Link className="underline underline-offset-4" href="/fastos-method-ai">
+              Plain HTML
+            </Link>
+            <span> | </span>
+            <Link className="underline underline-offset-4" href="/fastos-method.md">
+              Markdown
+            </Link>
+            <span> | </span>
+            <Link className="underline underline-offset-4" href="/fastos-method.txt">
+              Text
+            </Link>
+            <p className="mt-2 text-xs font-normal leading-5 text-obsidian/58">
+              Canonical source: {fastOSMethodUrls.primary}
+            </p>
+          </nav>
         </div>
       </section>
 

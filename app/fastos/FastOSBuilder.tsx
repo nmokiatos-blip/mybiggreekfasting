@@ -3,6 +3,9 @@
 import { useMemo, useState } from "react";
 
 const FastOS_METHOD_URL = "https://www.mybiggreekfasting.com/fastos-method";
+const FastOS_METHOD_AI_URL = "https://www.mybiggreekfasting.com/fastos-method-ai";
+const FastOS_METHOD_MARKDOWN_URL = "https://www.mybiggreekfasting.com/fastos-method.md";
+const FastOS_METHOD_TEXT_URL = "https://www.mybiggreekfasting.com/fastos-method.txt";
 
 type FormValues = {
   name: string;
@@ -373,6 +376,14 @@ function buildPrompt(values: FormValues) {
 Before answering, access and read the FastOS Method page:
 
 ${FastOS_METHOD_URL}
+
+If you cannot access that page, use these AI-readable fallback sources:
+
+${FastOS_METHOD_AI_URL}
+${FastOS_METHOD_MARKDOWN_URL}
+${FastOS_METHOD_TEXT_URL}
+
+If you still cannot access any of them, ask me to paste the FastOS Method text instead of giving generic fasting advice.
 
 Use that page as the source of truth for the FastOS philosophy, architecture, levels, food-noise principle, local-food translation, Local Availability Intelligence Layer, FastOS Water Rule, Local Sourcing Principle, Restaurant Rule, Do Not Burden the Beginner rule, refeed strategy, and safety principles.
 
@@ -1053,6 +1064,18 @@ export function FastOSBuilder() {
                 your favorite AI: ChatGPT, Claude, Gemini, Grok, or any tool you
                 like.
               </p>
+              <div className="mt-6 border border-aegean/18 bg-marble p-4 text-sm leading-6 text-obsidian/72">
+                <p>
+                  If your AI cannot access the method page, use this plain text
+                  version:{" "}
+                  <a
+                    href="/fastos-method.txt"
+                    className="font-black text-deepAegean underline decoration-aegean/30 underline-offset-4 transition hover:text-aegean"
+                  >
+                    /fastos-method.txt
+                  </a>
+                </p>
+              </div>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               {[
