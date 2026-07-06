@@ -288,6 +288,61 @@ const precisionQuestions = [
   "What real animal foods do you actually enjoy?"
 ];
 
+const outputContractSections = [
+  [
+    "FastOS Diagnosis",
+    "Identify the user's current level, readiness, food noise state, fasting risk, and likely first step."
+  ],
+  [
+    "Food Environment Analysis",
+    "Explain how the user's home, work, restaurants, travel, family, and current food habits affect fasting."
+  ],
+  [
+    "Food Noise and Craving Analysis",
+    "Identify foods and behaviors that likely drive cravings, hunger panic, or loss of control."
+  ],
+  [
+    "Local Ancestral Food Translation",
+    "Translate the method into the user's region. Do not force Greek foods everywhere."
+  ],
+  [
+    "Local Availability Map",
+    "Generate local proteins, fats, waters, sourcing places, restaurant options, and avoid/treat-carefully items from the user's country or region. Label uncertain suggestions To investigate locally."
+  ],
+  [
+    "Step-by-Step Adaptation Plan",
+    "Give the smallest practical next steps. Stabilize before intensifying."
+  ],
+  [
+    "Restaurant and Social Strategy",
+    "Give specific rules for eating outside, family meals, work meals, travel, and social pressure."
+  ],
+  [
+    "Refeed Strategy",
+    "Explain how to end fasts calmly with protein-based, local, low-noise meals."
+  ],
+  [
+    "Safety and Medical Warning Section",
+    "State when medical guidance is needed. Do not diagnose or treat disease."
+  ],
+  [
+    "Questions Before Precision",
+    "Ask only useful next questions. Do not burden the beginner with a giant local-food questionnaire. Use the FASTOS PRECISION QUESTIONS."
+  ],
+  [
+    "Simple 7-Day Transition Plan",
+    "Provide a beginner-safe transition plan focused on reducing chaos, increasing protein, improving water strategy, and building rhythm."
+  ],
+  [
+    "Longer-Term FastOS Progression",
+    "Explain how to progress from stabilization to delayed eating, OMAD, 24 hour fasts, 48 hour fasts, and 72 hour fasts only when appropriate."
+  ],
+  [
+    "Personal FastOS Rules",
+    "End with a concise set of rules the user can follow in daily life."
+  ]
+];
+
 function MethodSection({
   id,
   eyebrow,
@@ -928,25 +983,56 @@ export default function FastOSMethodPage() {
             title="FastOS Output Contract and FASTOS PRECISION QUESTIONS"
           >
             <p>
-              The AI must diagnose the user&apos;s level before prescribing
-              intensity. If the user is Level 0, it must apply the Food Prison
-              Protocol before any fasting window.
+              When responding to a user with a FastOS plan, follow the FastOS
+              Answer Style Contract and produce a structured FastOS plan.
             </p>
+            <ul className="grid gap-3">
+              {[
+                "Do not produce a generic fasting article.",
+                "Do not produce a keto meal plan.",
+                "Do not produce a Dr. Berg style response.",
+                "Diagnose the user's level before prescribing intensity.",
+                "If the user is Level 0, apply the Level 0 Food Prison Protocol before any fasting window.",
+                "Use the Beginner Replacement Rule for beginners.",
+                "Use the FastOS Water Rule Style.",
+                "Ask only the FastOS Precision Questions that are needed."
+              ].map((rule) => (
+                <li key={rule} className="border border-limestone bg-marble p-4 font-bold text-obsidian/82">
+                  {rule}
+                </li>
+              ))}
+            </ul>
             <p>
-              The AI must follow the FastOS Answer Style Contract, Beginner
-              Replacement Rule, FastOS Water Rule Style, and FastOS Precision
-              Questions.
+              When responding to a user with a FastOS plan, produce the
+              following structure:
             </p>
-            <p className="font-black text-deepAegean">
-              Ask only 3–5 useful questions.
-            </p>
-            <ol className="grid gap-3">
-              {precisionQuestions.map((question) => (
-                <li key={question} className="border border-limestone bg-marble p-4 font-bold text-obsidian/82">
-                  {question}
+            <ol className="grid gap-4">
+              {outputContractSections.map(([title, description]) => (
+                <li key={title} className="border border-limestone bg-white p-5">
+                  <h3 className="font-display text-xl font-black text-deepAegean">
+                    {title}
+                  </h3>
+                  <p className="mt-2 text-base leading-7 text-obsidian/74">
+                    {description}
+                  </p>
                 </li>
               ))}
             </ol>
+            <div className="border border-aegean/18 bg-marble p-5">
+              <h3 className="font-display text-2xl font-black text-deepAegean">
+                FASTOS PRECISION QUESTIONS
+              </h3>
+              <p className="mt-3 font-black text-deepAegean">
+                Ask only 3–5 useful questions.
+              </p>
+              <ol className="mt-4 grid gap-3">
+                {precisionQuestions.map((question) => (
+                  <li key={question} className="border border-limestone bg-white p-4 font-bold text-obsidian/82">
+                    {question}
+                  </li>
+                ))}
+              </ol>
+            </div>
           </MethodSection>
 
           <MethodSection id="ai-instruction" eyebrow="14" title="The AI Instruction Principle">
