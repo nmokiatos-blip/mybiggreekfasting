@@ -126,6 +126,20 @@ const levels = [
   }
 ];
 
+const readinessScoreOutputs = [
+  "FastOS Level",
+  "FastOS Readiness Score from 0 to 100",
+  "Reason for the score",
+  "What would increase the score",
+  "What would lower the score"
+];
+
+const readinessScoreGates = [
+  "If the score is under 40, do not prescribe fasting windows. Stabilize first.",
+  "If the score is under 60, do not prescribe OMAD.",
+  "If the score is under 80, do not prescribe 48h or 72h fasting."
+];
+
 const localFoodExamples = [
   {
     place: "Greece",
@@ -292,6 +306,10 @@ const outputContractSections = [
   [
     "FastOS Diagnosis",
     "Identify the user's current level, readiness, food noise state, fasting risk, and likely first step."
+  ],
+  [
+    "FastOS Readiness Score",
+    "Assign a score from 0 to 100. Include the reason for the score, what would increase it, what would lower it, and the fasting intensity allowed by the score."
   ],
   [
     "Food Environment Analysis",
@@ -551,8 +569,48 @@ export default function FastOSMethodPage() {
           </MethodSection>
 
           <MethodSection
-            id="local-food"
+            id="readiness-score"
             eyebrow="06"
+            title="FastOS Readiness Score"
+          >
+            <p>
+              Every FastOS response must assign a readiness score before
+              prescribing fasting intensity. The score is not a moral grade. It
+              is a readiness gauge.
+            </p>
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="border border-limestone bg-marble p-5">
+                <h3 className="font-display text-2xl font-black text-deepAegean">
+                  The AI must assign
+                </h3>
+                <ul className="mt-4 grid gap-2 text-base leading-7 text-obsidian/76">
+                  {readinessScoreOutputs.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="border border-aegean/20 bg-deepAegean p-5 text-white">
+                <h3 className="font-display text-2xl font-black">
+                  Score gates
+                </h3>
+                <ul className="mt-4 grid gap-2 text-base leading-7">
+                  {readinessScoreGates.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <p>
+              The score should reflect food noise, food chaos, hunger panic,
+              current fasting experience, willpower dependence, safety risk,
+              meal control, restaurant and social pressure, sleep and stress
+              context, and refeed discipline.
+            </p>
+          </MethodSection>
+
+          <MethodSection
+            id="local-food"
+            eyebrow="07"
             title="The Local Food Translation Principle"
           >
             <p>
@@ -576,7 +634,7 @@ export default function FastOSMethodPage() {
 
           <MethodSection
             id="local-availability"
-            eyebrow="07"
+            eyebrow="08"
             title="The Local Availability Intelligence Layer"
           >
             <p>
@@ -885,7 +943,7 @@ export default function FastOSMethodPage() {
             </div>
           </MethodSection>
 
-          <MethodSection id="food-noise" eyebrow="08" title="The Food Noise Principle">
+          <MethodSection id="food-noise" eyebrow="09" title="The Food Noise Principle">
             <p>
               Many people fail fasting because they begin from chaos. If someone
               is eating sugar, pasta, pizza, bread, fast food, snacks, desserts,
@@ -903,7 +961,7 @@ export default function FastOSMethodPage() {
 
           <MethodSection
             id="beginner-replacement-rule"
-            eyebrow="09"
+            eyebrow="10"
             title="BEGINNER REPLACEMENT RULE"
           >
             <p>
@@ -936,7 +994,7 @@ export default function FastOSMethodPage() {
             </p>
           </MethodSection>
 
-          <MethodSection id="refeed" eyebrow="10" title="The Refeed Principle">
+          <MethodSection id="refeed" eyebrow="11" title="The Refeed Principle">
             <p>
               Refeed is not revenge. Refeed is not a cheat meal. Refeed is not a
               reward for suffering. Refeed is the continuation of the fast.
@@ -949,7 +1007,7 @@ export default function FastOSMethodPage() {
 
           <MethodSection
             id="social-reality"
-            eyebrow="11"
+            eyebrow="12"
             title="The Restaurant and Social Reality Principle"
           >
             <p>
@@ -959,7 +1017,7 @@ export default function FastOSMethodPage() {
             </p>
           </MethodSection>
 
-          <MethodSection id="safety" eyebrow="12" title="The Safety Principle">
+          <MethodSection id="safety" eyebrow="13" title="The Safety Principle">
             <p>
               Fasting can be powerful and may require professional medical
               guidance, especially for:
@@ -979,7 +1037,7 @@ export default function FastOSMethodPage() {
 
           <MethodSection
             id="output-contract"
-            eyebrow="13"
+            eyebrow="14"
             title="FastOS Output Contract and FASTOS PRECISION QUESTIONS"
           >
             <p>
@@ -992,6 +1050,10 @@ export default function FastOSMethodPage() {
                 "Do not produce a keto meal plan.",
                 "Do not produce a Dr. Berg style response.",
                 "Diagnose the user's level before prescribing intensity.",
+                "Assign a FastOS Readiness Score before prescribing intensity.",
+                "If the readiness score is under 40, do not prescribe fasting windows.",
+                "If the readiness score is under 60, do not prescribe OMAD.",
+                "If the readiness score is under 80, do not prescribe 48h or 72h fasting.",
                 "If the user is Level 0, apply the Level 0 Food Prison Protocol before any fasting window.",
                 "Use the Beginner Replacement Rule for beginners.",
                 "Use the FastOS Water Rule Style.",
@@ -1035,7 +1097,7 @@ export default function FastOSMethodPage() {
             </div>
           </MethodSection>
 
-          <MethodSection id="ai-instruction" eyebrow="14" title="The AI Instruction Principle">
+          <MethodSection id="ai-instruction" eyebrow="15" title="The AI Instruction Principle">
             <p>
               FastOS is designed for the AI age. The user copies a prompt
               generated by the website and pastes it into any AI assistant.

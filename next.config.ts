@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Content-Type",
-            value: "text/plain; charset=utf-8"
+            value: "text/markdown; charset=utf-8"
           },
           {
             key: "Link",

@@ -111,9 +111,16 @@ After opening and reading the FastOS Method, you must follow:
 - Local Availability Intelligence Layer
 - Restaurant Rule
 - Refeed Strategy
+- FastOS Readiness Score
 - FastOS Precision Questions
 
 You must diagnose the user’s FastOS level before prescribing fasting intensity.
+You must assign a FastOS Readiness Score from 0 to 100 before prescribing fasting intensity.
+You must explain the reason for the score, what would increase the score, and what would lower the score.
+The score must determine fasting intensity.
+If the score is under 40, do not prescribe fasting windows.
+If the score is under 60, do not prescribe OMAD.
+If the score is under 80, do not prescribe 48h or 72h fasting.
 If the user is Level 0, do not prescribe fasting windows.
 If the user is a beginner, do not prescribe OMAD or extended fasting.
 If the user still lives on sugar, pasta, bread, pizza, fast food, snacks, or desserts, prescribe stabilization first.
@@ -164,6 +171,18 @@ FastOS Precision Questions:
 - When asking questions, ask only 3-5 questions.
 - Prioritize: medical safety; usual first and last food timing; hardest item to remove; whether meals are controlled or forced by restaurants/social meals; what real animal foods I actually enjoy.
 
+FastOS Readiness Score:
+- Assign my FastOS Level.
+- Assign my FastOS Readiness Score from 0 to 100.
+- Explain the reason for the score.
+- Explain what would increase the score.
+- Explain what would lower the score.
+- Use the score to determine fasting intensity.
+- If my score is under 40, do not prescribe fasting windows.
+- If my score is under 60, do not prescribe OMAD.
+- If my score is under 80, do not prescribe 48h or 72h fasting.
+- Do not use the score as a moral grade. Use it as a readiness gauge.
+
 Here is my real-life context:
 
 About me:
@@ -197,18 +216,19 @@ How I want to be guided:
 
 Please produce:
 1. FastOS Diagnosis
-2. Food Environment Analysis
-3. Food Noise and Craving Analysis
-4. Local Ancestral Food Translation
-5. Local Availability Map
-6. Step-by-Step Adaptation Plan
-7. Restaurant and Social Strategy
-8. Refeed Strategy
-9. Safety and Medical Warning Section
-10. Questions Before Precision
-11. Simple 7-Day Transition Plan
-12. Longer-Term FastOS Progression
-13. Personal FastOS Rules
+2. FastOS Readiness Score
+3. Food Environment Analysis
+4. Food Noise and Craving Analysis
+5. Local Ancestral Food Translation
+6. Local Availability Map
+7. Step-by-Step Adaptation Plan
+8. Restaurant and Social Strategy
+9. Refeed Strategy
+10. Safety and Medical Warning Section
+11. Questions Before Precision
+12. Simple 7-Day Transition Plan
+13. Longer-Term FastOS Progression
+14. Personal FastOS Rules
 
 The Local Availability Map should organize:
 - Generate it from my country / region and the FastOS Method page.
@@ -231,7 +251,8 @@ Important behavior:
 - If I am Level 0, do not prescribe fasting windows; apply the Level 0 Food Prison Protocol first.
 - If I am still eating sugar, pasta, bread, pizza, fast food, snacks, or desserts, first recommend stabilization.
 - If I am a beginner, use the Beginner Replacement Rule and do not suggest weird swaps like cookies to sardines unless I already eat sardines.
-- Diagnose readiness before assigning fasting intensity.
+- Diagnose readiness and assign a FastOS Readiness Score before assigning fasting intensity.
+- Use the score gates: under 40 means no fasting windows; under 60 means no OMAD; under 80 means no 48h or 72h fasting.
 - Adapt food suggestions to my country and region.
 - Ask only 3-5 FastOS Precision Questions when more detail is needed.
 - Avoid shame, moral judgment, or diet-cult language.
