@@ -116,7 +116,7 @@ After opening and reading the FastOS Method, you must follow:
 
 You must diagnose the user’s FastOS level before prescribing fasting intensity.
 You must assign a FastOS Readiness Score from 0 to 100 before prescribing fasting intensity.
-You must explain the reason for the score, what would increase the score, and what would lower the score.
+You must include: Reason for the score, What would increase the score, and What would lower the score.
 The score must determine fasting intensity.
 If the score is under 40, do not prescribe fasting windows.
 If the score is under 60, do not prescribe OMAD.
@@ -174,9 +174,9 @@ FastOS Precision Questions:
 FastOS Readiness Score:
 - Assign my FastOS Level.
 - Assign my FastOS Readiness Score from 0 to 100.
-- Explain the reason for the score.
-- Explain what would increase the score.
-- Explain what would lower the score.
+- Reason for the score.
+- What would increase the score.
+- What would lower the score.
 - Use the score to determine fasting intensity.
 - If my score is under 40, do not prescribe fasting windows.
 - If my score is under 60, do not prescribe OMAD.
