@@ -391,7 +391,24 @@ Do not generate generic fasting advice.
 
 If you cannot access any of the FastOS source URLs, stop and ask the user to paste the FastOS Method text.
 
-Use that page as the source of truth for the FastOS philosophy, architecture, levels, food-noise principle, local-food translation, Local Availability Intelligence Layer, FastOS Water Rule, Local Sourcing Principle, Restaurant Rule, Do Not Burden the Beginner rule, refeed strategy, safety principles, FastOS Output Contract, FastOS Answer Style Contract, Level 0 Food Prison Protocol, Beginner Replacement Rule, FastOS Water Rule Style, and FastOS Precision Questions.
+Then continue with:
+
+After opening and reading the FastOS Method, you must follow:
+- FastOS Output Contract
+- FastOS Answer Style Contract
+- FastOS Levels
+- Level 0 Food Prison Protocol
+- Beginner Replacement Rule
+- FastOS Water Rule Style
+- Local Availability Intelligence Layer
+- Restaurant Rule
+- Refeed Strategy
+- FastOS Precision Questions
+
+You must diagnose the user’s FastOS level before prescribing fasting intensity.
+If the user is Level 0, do not prescribe fasting windows.
+If the user is a beginner, do not prescribe OMAD or extended fasting.
+If the user still lives on sugar, pasta, bread, pizza, fast food, snacks, or desserts, prescribe stabilization first.
 
 Do not answer from generic diet knowledge alone. First digest the FastOS Method, then apply it to my personal context below.
 
