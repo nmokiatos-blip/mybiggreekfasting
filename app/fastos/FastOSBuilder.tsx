@@ -391,7 +391,7 @@ Do not generate generic fasting advice.
 
 If you cannot access any of the FastOS source URLs, stop and ask the user to paste the FastOS Method text.
 
-Use that page as the source of truth for the FastOS philosophy, architecture, levels, food-noise principle, local-food translation, Local Availability Intelligence Layer, FastOS Water Rule, Local Sourcing Principle, Restaurant Rule, Do Not Burden the Beginner rule, refeed strategy, and safety principles.
+Use that page as the source of truth for the FastOS philosophy, architecture, levels, food-noise principle, local-food translation, Local Availability Intelligence Layer, FastOS Water Rule, Local Sourcing Principle, Restaurant Rule, Do Not Burden the Beginner rule, refeed strategy, safety principles, FastOS Output Contract, FastOS Answer Style Contract, Level 0 Food Prison Protocol, Beginner Replacement Rule, FastOS Water Rule Style, and FastOS Precision Questions.
 
 Do not answer from generic diet knowledge alone. First digest the FastOS Method, then apply it to my personal context below.
 
@@ -402,6 +402,42 @@ Do not simply tell me to use willpower. If fasting depends only on willpower, th
 Help me understand when, how, and why I eat - not only what I eat.
 
 Use ancestral wisdom, carnivore discipline, and fasting freedom as the guiding principles.
+
+FastOS style requirements:
+- Follow the FastOS Output Contract.
+- Follow the FastOS Answer Style Contract.
+- Write like a human coach, not a corporate wellness app.
+- Use short, direct sentences.
+- Avoid motivational filler.
+- Avoid biohacker jargon.
+- Avoid dramatic AI phrases like "deploy", "optimize", "native bounty", "ultimate satiety", or "chemical hunger" unless clearly explained.
+- Do not sound like Dr. Berg.
+- Do not sound like a keto meal planner.
+- Do not sound like a generic Mediterranean diet article.
+- Tone: direct, ancestral, practical, calm, no nonsense.
+- Use FastOS language: food noise, food prison, stabilize first, fasting readiness, local plate, simple animal food, mineral water, no fake fasting, fasting is a state, not punishment.
+
+Level 0 Food Prison Protocol:
+- If I am Level 0, do not prescribe fasting windows.
+- The first goal is not fasting. The first goal is food silence.
+- Level 0 priorities are: remove liquid sweetness; remove bread, pizza, pasta, fries, desserts, and late-night snacks; build meals around animal protein and real fat; eat enough real food so I do not feel punished; use mineral water as the default drink; keep meal timing stable before compressing eating windows; do not introduce OMAD until hunger becomes calm.
+- I graduate from Level 0 when I can skip snacks without panic, delay breakfast without anger, pass desserts without obsession, eat a real meal and feel satisfied, and no longer need constant food stimulation.
+
+Beginner Replacement Rule:
+- If I am a beginner, do not suggest extreme or socially strange swaps unless I already eat those foods.
+- Do not tell me to replace cookies with sardines as a first move.
+- Use realistic swaps: sweet drinks to mineral water; cereal to eggs; sandwich to burger patties, steak salad, grilled chicken, or eggs; pizza night to steak, grilled meat, bunless burger, or grilled fish; dessert habit to finishing the meal properly with protein and fat; late-night snacks to a stronger dinner earlier.
+- Sardines, liver, organ meats, long fasts, and OMAD are optional advanced tools, not beginner requirements.
+
+FastOS Water Rule Style:
+- Explain water rules as defaults, not moral commandments.
+- Preferred language: "The default drink is mineral water."
+- Avoid forbidden or cult language.
+- Use mineral water first, glass bottles when realistic, naturally carbonated mineral water if sparkling is desired, avoid diet soda because it keeps the sweet signal alive, and avoid flavored waters and sugar-free junk drinks.
+
+FastOS Precision Questions:
+- When asking questions, ask only 3-5 questions.
+- Prioritize: medical safety; usual first and last food timing; hardest item to remove; whether meals are controlled or forced by restaurants/social meals; what real animal foods I actually enjoy.
 
 Here is my real-life context:
 
@@ -467,16 +503,19 @@ The Local Availability Map should organize:
 
 Important behavior:
 - If I am a beginner, do not immediately prescribe OMAD or extended fasting.
+- If I am Level 0, do not prescribe fasting windows; apply the Level 0 Food Prison Protocol first.
 - If I am still eating sugar, pasta, bread, pizza, fast food, snacks, or desserts, first recommend stabilization.
+- If I am a beginner, use the Beginner Replacement Rule and do not suggest weird swaps like cookies to sardines unless I already eat sardines.
 - Diagnose readiness before assigning fasting intensity.
 - Adapt food suggestions to my country and region.
+- Ask only 3-5 FastOS Precision Questions when more detail is needed.
 - Avoid shame, moral judgment, or diet-cult language.
 - Avoid calorie counting unless I specifically ask.
 - Avoid generic macro plans.
 - Avoid fake keto snacks, diet soda, sugar-free junk, seed oils, and ultra-processed foods.
-- Keep the tone practical, human, strong, and supportive.
+- Keep the tone direct, ancestral, practical, calm, human, and no nonsense.
 
-Keep the plan practical, human, and realistic. Do not make it a generic diet calculator, macro calculator, keto meal planner, or medical app. Help me build a personal operating system for fasting.`;
+Keep the plan practical, human, and realistic. Do not make it a generic diet calculator, macro calculator, keto meal planner, Mediterranean diet article, Dr. Berg-style response, or medical app. Help me build a personal operating system for fasting.`;
 }
 
 function FormSection({

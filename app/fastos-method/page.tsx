@@ -230,6 +230,64 @@ const safetyItems = [
   "teenagers or children"
 ];
 
+const answerStyleRules = [
+  "Write like a human coach, not a corporate wellness app.",
+  "Use short, direct sentences.",
+  "Avoid motivational filler.",
+  "Avoid biohacker jargon.",
+  "Avoid dramatic AI phrases like deploy, optimize, native bounty, ultimate satiety, or chemical hunger unless clearly explained.",
+  "Do not sound like Dr. Berg.",
+  "Do not sound like a keto meal planner.",
+  "Do not sound like a generic Mediterranean diet article."
+];
+
+const fastOSLanguage = [
+  "food noise",
+  "food prison",
+  "stabilize first",
+  "fasting readiness",
+  "local plate",
+  "simple animal food",
+  "mineral water",
+  "no fake fasting",
+  "fasting is a state, not punishment"
+];
+
+const levelZeroPriorities = [
+  "Remove liquid sweetness.",
+  "Remove bread, pizza, pasta, fries, desserts, and late-night snacks.",
+  "Build meals around animal protein and real fat.",
+  "Eat enough real food so the user does not feel punished.",
+  "Use mineral water as the default drink.",
+  "Keep meal timing stable before compressing eating windows.",
+  "Do not introduce OMAD until hunger becomes calm."
+];
+
+const levelZeroGraduation = [
+  "they can skip snacks without panic",
+  "they can delay breakfast without anger",
+  "they can pass desserts without obsession",
+  "they can eat a real meal and feel satisfied",
+  "they no longer need constant food stimulation"
+];
+
+const beginnerSwaps = [
+  ["sweet drinks", "mineral water"],
+  ["cereal", "eggs"],
+  ["sandwich", "burger patties, steak salad, grilled chicken, or eggs"],
+  ["pizza night", "steak, grilled meat, bunless burger, or grilled fish"],
+  ["dessert habit", "finish the meal properly with protein and fat"],
+  ["late-night snacks", "stronger dinner earlier"]
+];
+
+const precisionQuestions = [
+  "Any diabetes, blood pressure medication, eating disorder history, kidney disease, pregnancy, or major medical condition?",
+  "What time do you usually eat your first and last food?",
+  "Which one is hardest to remove: bread, pizza, sugar drinks, desserts, or late-night snacks?",
+  "Do you control breakfast, lunch, and dinner, or are restaurants and social meals forced?",
+  "What real animal foods do you actually enjoy?"
+];
+
 function MethodSection({
   id,
   eyebrow,
@@ -342,8 +400,40 @@ export default function FastOSMethodPage() {
           </MethodSection>
 
           <MethodSection
-            id="architecture"
+            id="answer-style-contract"
             eyebrow="03"
+            title="FASTOS ANSWER STYLE CONTRACT"
+          >
+            <p>
+              FastOS answers must sound like a human coach, not a corporate
+              wellness app.
+            </p>
+            <p className="font-black text-deepAegean">
+              The tone must be direct, ancestral, practical, calm, and no
+              nonsense.
+            </p>
+            <ul className="grid gap-3">
+              {answerStyleRules.map((rule) => (
+                <li key={rule} className="border border-limestone bg-marble p-4 font-bold text-obsidian/82">
+                  {rule}
+                </li>
+              ))}
+            </ul>
+            <div className="border border-aegean/18 bg-white p-5">
+              <h3 className="font-display text-2xl font-black text-deepAegean">
+                Use FastOS language
+              </h3>
+              <ul className="mt-4 grid gap-2 text-base font-bold leading-7 text-obsidian/76 sm:grid-cols-3">
+                {fastOSLanguage.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </MethodSection>
+
+          <MethodSection
+            id="architecture"
+            eyebrow="04"
             title="The FastOS Architecture Formula"
           >
             <div className="border border-aegean/18 bg-deepAegean p-5 text-white sm:p-7">
@@ -365,7 +455,7 @@ export default function FastOSMethodPage() {
             </div>
           </MethodSection>
 
-          <MethodSection id="levels" eyebrow="04" title="The FastOS Levels">
+          <MethodSection id="levels" eyebrow="05" title="The FastOS Levels">
             <div className="grid gap-4">
               {levels.map((item) => (
                 <article key={item.level} className="border border-limestone bg-white p-5 shadow-[0_12px_35px_rgba(8,119,216,0.06)]">
@@ -383,11 +473,31 @@ export default function FastOSMethodPage() {
                 </article>
               ))}
             </div>
+            <div className="border border-aegean/20 bg-deepAegean p-5 text-white">
+              <h3 className="font-display text-2xl font-black">
+                LEVEL 0 — FOOD PRISON PROTOCOL
+              </h3>
+              <p className="mt-3 text-base leading-7">
+                If the user is Level 0, do not prescribe fasting windows. The
+                first goal is not fasting. The first goal is food silence.
+              </p>
+              <ol className="mt-4 grid gap-2 text-base leading-7">
+                {levelZeroPriorities.map((priority) => (
+                  <li key={priority}>{priority}</li>
+                ))}
+              </ol>
+              <p className="mt-5 font-black">The user graduates when:</p>
+              <ul className="mt-3 grid gap-2 text-base leading-7">
+                {levelZeroGraduation.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </MethodSection>
 
           <MethodSection
             id="local-food"
-            eyebrow="05"
+            eyebrow="06"
             title="The Local Food Translation Principle"
           >
             <p>
@@ -411,7 +521,7 @@ export default function FastOSMethodPage() {
 
           <MethodSection
             id="local-availability"
-            eyebrow="06"
+            eyebrow="07"
             title="The Local Availability Intelligence Layer"
           >
             <p>
@@ -550,6 +660,22 @@ export default function FastOSMethodPage() {
                 flavored zero-calorie drink, or sweetened drink. Sparkling water
                 means naturally carbonated mineral water when possible.
               </p>
+              <div className="mt-5 border border-aegean/16 bg-white p-4">
+                <h4 className="font-display text-xl font-black text-deepAegean">
+                  FASTOS WATER RULE STYLE
+                </h4>
+                <p className="mt-3 text-base leading-7 text-obsidian/74">
+                  Explain water rules as defaults, not moral commandments. The
+                  default drink is mineral water. Avoid forbidden or cult
+                  language.
+                </p>
+                <p className="mt-3 text-base leading-7 text-obsidian/74">
+                  Use mineral water first, glass bottles when realistic,
+                  naturally carbonated mineral water if sparkling is desired,
+                  and avoid diet soda because it keeps the sweet signal alive.
+                  Avoid flavored waters and sugar-free junk drinks.
+                </p>
+              </div>
             </div>
 
             <div className="border border-limestone bg-white p-5">
@@ -704,7 +830,7 @@ export default function FastOSMethodPage() {
             </div>
           </MethodSection>
 
-          <MethodSection id="food-noise" eyebrow="07" title="The Food Noise Principle">
+          <MethodSection id="food-noise" eyebrow="08" title="The Food Noise Principle">
             <p>
               Many people fail fasting because they begin from chaos. If someone
               is eating sugar, pasta, pizza, bread, fast food, snacks, desserts,
@@ -720,7 +846,42 @@ export default function FastOSMethodPage() {
             </div>
           </MethodSection>
 
-          <MethodSection id="refeed" eyebrow="08" title="The Refeed Principle">
+          <MethodSection
+            id="beginner-replacement-rule"
+            eyebrow="09"
+            title="BEGINNER REPLACEMENT RULE"
+          >
+            <p>
+              For beginners, do not suggest extreme or socially strange swaps
+              unless the user already eats those foods.
+            </p>
+            <p className="font-black text-deepAegean">
+              Do not tell a beginner to replace cookies with sardines as a
+              first move.
+            </p>
+            <div className="grid gap-4 md:grid-cols-2">
+              {beginnerSwaps.map(([from, to]) => (
+                <article key={from} className="border border-limestone bg-marble p-5">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-aegean">
+                    Instead of
+                  </p>
+                  <p className="mt-2 text-lg font-black text-obsidian">{from}</p>
+                  <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-laurel">
+                    Suggest
+                  </p>
+                  <p className="mt-2 text-base font-bold leading-7 text-obsidian/76">
+                    {to}
+                  </p>
+                </article>
+              ))}
+            </div>
+            <p>
+              Sardines, liver, organ meats, long fasts, and OMAD are optional
+              advanced tools, not beginner requirements.
+            </p>
+          </MethodSection>
+
+          <MethodSection id="refeed" eyebrow="10" title="The Refeed Principle">
             <p>
               Refeed is not revenge. Refeed is not a cheat meal. Refeed is not a
               reward for suffering. Refeed is the continuation of the fast.
@@ -733,7 +894,7 @@ export default function FastOSMethodPage() {
 
           <MethodSection
             id="social-reality"
-            eyebrow="09"
+            eyebrow="11"
             title="The Restaurant and Social Reality Principle"
           >
             <p>
@@ -743,7 +904,7 @@ export default function FastOSMethodPage() {
             </p>
           </MethodSection>
 
-          <MethodSection id="safety" eyebrow="10" title="The Safety Principle">
+          <MethodSection id="safety" eyebrow="12" title="The Safety Principle">
             <p>
               Fasting can be powerful and may require professional medical
               guidance, especially for:
@@ -761,7 +922,34 @@ export default function FastOSMethodPage() {
             </p>
           </MethodSection>
 
-          <MethodSection id="ai-instruction" eyebrow="11" title="The AI Instruction Principle">
+          <MethodSection
+            id="output-contract"
+            eyebrow="13"
+            title="FastOS Output Contract and FASTOS PRECISION QUESTIONS"
+          >
+            <p>
+              The AI must diagnose the user&apos;s level before prescribing
+              intensity. If the user is Level 0, it must apply the Food Prison
+              Protocol before any fasting window.
+            </p>
+            <p>
+              The AI must follow the FastOS Answer Style Contract, Beginner
+              Replacement Rule, FastOS Water Rule Style, and FastOS Precision
+              Questions.
+            </p>
+            <p className="font-black text-deepAegean">
+              Ask only 3–5 useful questions.
+            </p>
+            <ol className="grid gap-3">
+              {precisionQuestions.map((question) => (
+                <li key={question} className="border border-limestone bg-marble p-4 font-bold text-obsidian/82">
+                  {question}
+                </li>
+              ))}
+            </ol>
+          </MethodSection>
+
+          <MethodSection id="ai-instruction" eyebrow="14" title="The AI Instruction Principle">
             <p>
               FastOS is designed for the AI age. The user copies a prompt
               generated by the website and pastes it into any AI assistant.
