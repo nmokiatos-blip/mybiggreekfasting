@@ -1222,7 +1222,7 @@ export function FastOSBuilder() {
       <section className="bg-marble px-5 py-10 text-obsidian sm:px-8 lg:px-12">
         <div className="mx-auto max-w-6xl border border-aegean/16 bg-white p-5 sm:p-6">
           <p className="text-xs font-black uppercase tracking-[0.22em] text-laurel">
-            AI/debug sources
+            AI Verification Links
           </p>
           <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm font-bold text-deepAegean">
             {[
